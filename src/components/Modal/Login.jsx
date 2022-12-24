@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 
+import { useQuery } from "@tanstack/react-query";
+export const  SIGNIN_QUERY_KEY = 'SIGNIN_QUERY_KEY';
+function signIn(values) {
+	const { data } = useQuery(
+	{ queryKey: SIGNIN_QUERY_KEY, queryFn: getSignIn(values.email, values.password) },
+	)
+	return data
+}
+
 export default ({change, api, close, setToken}) => {
 	const [inp1, setInp1] = useState("");
 	const [inp2, setInp2] = useState("");

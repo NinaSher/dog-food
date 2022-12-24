@@ -1,9 +1,14 @@
+
+
+
 class Api {
 	constructor(token) {
 		this.path = "https://api.react-learning.ru";
 		this.group = "sm8";
 		this.token = token;
 	}
+
+	
 	signUp(body){ //регистрация
 		body.group = this.group;
 		return fetch(`${this.path}/signup`, {

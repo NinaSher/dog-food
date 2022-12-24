@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 
+import { useQuery } from "@tanstack/react-query";
+export const  SIGNUP_QUERY_KEY = 'SIGNUP_QUERY_KEY';
+function signup(values) {
+	const { data } = useQuery(
+	{ queryKey: SIGNUP_QUERY_KEY, queryFn: getSignUp(values.email, values.password, values.group) },
+	)
+	return data
+}
+
 export default ({change, api, close, setToken}) => {
 	const [inp1, setInp1] = useState("");
 	const [inp2, setInp2] = useState("");
@@ -26,7 +35,7 @@ export default ({change, api, close, setToken}) => {
 		api.signIp(body)
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
+				//console.log(data);
 				if (!data.err) {
 					api.logIn(body)
 					.then(res => res.json())

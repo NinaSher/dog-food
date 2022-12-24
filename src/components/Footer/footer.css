@@ -4,23 +4,24 @@ footer {
 	padding: 90px 20px;
 	font-size: 16px;
 	font-weight: 600;
+	margin-top: 20px;
 }
 .footer__container{
 	display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 30px 40px;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 20px;
 	gap: 220px;
 }
 .footer__copy {
    text-align: center;
    opacity: 0.5;
-   margin-top: 40px;
+   margin-top: 30px;
 }
 
 .footer__group {
-	margin-right: 80px;
+	margin-right: 60px;
 }
 .footer h3 {
 	font-size: 16px;

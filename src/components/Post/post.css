@@ -1,0 +1,29 @@
+
+.promo{
+	border: 1px solid #0000;
+	border-radius: 10px;
+	padding: 20px;
+	display: flex;
+	gap: 20px;
+	background-image: url("./img/HappyDog.jpg");
+	background-position: center;
+	background-size: cover;
+	align-items: flex-and;
+	position: relative;
+	overflow: hidden;
+}
+.promo::before{
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #0001;
+	z-index: -1;
+}
+
+.promo img{
+	width: 200px;
+}
+
