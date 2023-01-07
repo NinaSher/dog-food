@@ -12,7 +12,8 @@ export default ({setUser, user}) => {
 	}
 	return<>
 	<h1>Личный кабинет</h1>
+	<img src={user.avatar} alt="avatar" />
 	<p>Привет, {user}</p>
-	<a href="" onClick={logOut}>Выйти</a>
+	<a href="" onClick={logOut} style={{color:"black"}}>Выйти</a>
 	</>
 }

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Search from "../Search/search";
+import { Basket } from "react-bootstrap-icons";
 import './header.css';
 
 
-export default ({ user, setUser, products, setModalActive }) => {
+
+export default ({ user, setUser, goods, searchGoods, setModalActive }) => {
 
 
 	const logIn = (e) => {
@@ -18,7 +20,8 @@ export default ({ user, setUser, products, setModalActive }) => {
 	}
 	return <header>
 		<Link className="logo" to="/">FoodDog</Link>
-		<Search data={products} />
+		<Search data={goods} searchGoods={searchGoods} />
+		<Basket/>
 		<nav className="menu">
 			{user && <Link to="/profile">{user}</Link>}
 			{!user && <a href="" onClick={logIn}>Войти</a>}

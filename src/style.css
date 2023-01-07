@@ -31,6 +31,25 @@ a{
 	padding-left: 20px;
 	padding-right: 20px;
 }
+.empty-block {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	height: 100%;
+	justify-content: center;
+}
+
+.empty-block svg {
+	font-size: 4rem;
+	fill: #dedede;
+}
+.empty-block .btn {
+	border: 1px solid #dedede;
+	border-radius: 18px;
+	display: flex;
+	padding: 6px 12px;
+}
 @media(max-width: 1260px) {
 	.container>*{
 		padding: 0 50px;
@@ -40,7 +59,39 @@ a{
 		gap: 2em;
 	}
 }
+@media (max-width: 720px) {
+	body {
+		font-size: 14px;
+	}
+}
 
+@media (max-width: 540px) {
+	main {
+		text-align: center;
+	}
+}
+
+@media (max-width: 360px) {
+	body {
+		font-size: 12px;
+	}
+}@media (max-width: 720px) {
+	body {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 540px) {
+	main {
+		text-align: center;
+	}
+}
+
+@media (max-width: 360px) {
+	body {
+		font-size: 12px;
+	}
+}
 
 
 

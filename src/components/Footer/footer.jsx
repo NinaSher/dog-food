@@ -22,10 +22,15 @@ export default () => {
 			</div>
 			<div className="footer__groop">
 				<h3>Мы на связи</h3>
-				<div class="footer__links">
+				<div className="footer__links">
 					<a href="tel:8999000000">8 (999) 00-00-00</a>
 					<a href="#">FoodDog@gmail.com</a>
-					<div className="icon"><i className="fa-brands fa-instagram"></i> <i class="fa-brands fa-telegram"></i> <i class="fa-brands fa-viber"></i> <i class="fa-brands fa-vk"></i></div>
+					<div className="icon">
+						<i className="fa-brands fa-instagram"></i> 
+						<i className="fa-brands fa-telegram"></i> 
+						<i className="fa-brands fa-viber"></i> 
+						<i className="fa-brands fa-vk"></i>
+					</div>
 				</div>
 			</div>
 		</div>

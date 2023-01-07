@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import './style.css';
 
-import products from "./assets/data.json";
+//import products from "./assets/data.json";
 
 import Header from "./components/Header/header";
 import Footer from "./components/Footer/footer";
 import Modal from "./components/Modal";
 import Topnav from "./components/Topnav/topnav";
+
 
 
 import Home from "./pages/Home.jsx";
@@ -25,7 +26,8 @@ const App = () => {
 	const [token, setToken] = useState(localStorage.getItem('token'));
 	const [modalActive, setModalActive] = useState(false);
 	const [api, setApi] = useState(new Api(token));
-	const [goods, setProducts] = useState([]);
+	const [goods, setGoods] = useState([]);
+	const [visibleGoods, setVisibleGoods] = useState(goods);
 
 
 	useEffect(() => {
@@ -37,7 +39,7 @@ const App = () => {
 				.then(res => res.json())
 				.then(data => {
 					//console.log(data);
-					setProducts(data.products);
+					setGoods(data.products);
 				})
 		}
 	}, [])
@@ -61,10 +63,14 @@ const App = () => {
 			api.getProducts()
 				.then(res => res.json())
 				.then(data => {
-					setProducts(data.products);
+					setGoods(data.products);
 				})
 		}
 	}, [api])
+
+	useEffect(() => {
+		setVisibleGoods(goods);
+	}, [goods])
 
 	return (
 		<>
@@ -72,16 +78,18 @@ const App = () => {
 				<Header
 					user={user}
 					setUser={setUser}
-					products={products}
+					goods={goods}
+					searchGoods={setVisibleGoods}
 					setModalActive={setModalActive}
 				/>
 				<main>
+				
 					<Topnav />
 					{/*user ? <Catalog data={products} /> : <Home data={blocks} />*/
 					}
 					<Routes>
 						<Route path="/" element={<Home data={blocks} />} />
-						<Route path="/catalog" element={<Catalog data={goods} />} />
+						<Route path="/catalog" element={<Catalog data={visibleGoods} />} />
 						<Route path="/profile" element={<Profile setUser={setUser} user={user} />} />
 						<Route path="/catalog/:id" element={<Product/>}/>
 					</Routes>
