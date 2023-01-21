@@ -5,7 +5,7 @@ import { BiCartAlt } from "react-icons/bi";
 import { CartMenu } from "../CartMenu/CartMenu";
 import { calcTotalPrice } from "../utils";
 import { ItemsInCart } from "../ItemsInCart/ItemsInCart";
-import { useHistory } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./cartBlock.css";
 
@@ -14,14 +14,14 @@ import "./cartBlock.css";
 export const CartBlock = () => {
 	const [isCartMenuVisible, setIsCartMenuVisible] = useState(false)
 	const items = useSelector(state => state.cart.itemsInCart);
-	//const history = useHistory();
+	const navigate = useNavigate();
 	const totalPrice = calcTotalPrice(items);
 
 
 	const handleGoToOrderClick = useCallback(() => {
 		setIsCartMenuVisible(false);
-		//history.push('/orderItem');
-	}, []);
+		navigate.push('/orderItem');
+	}, [navigate]);
 
 
 	return (

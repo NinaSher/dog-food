@@ -24,7 +24,7 @@
 	justify-content: center;
 	padding: 10px;
 }
-.card img {
+.card__heart img {
 	max-width: 100%;
 	min-height: 100%;
 }
@@ -71,10 +71,6 @@ h3 {
 	padding: 10px;
 }
 
-.card img {
-	max-width: 100%;
-	min-height: 100%;
-}
 
 .card__price,
 .card__old-price,

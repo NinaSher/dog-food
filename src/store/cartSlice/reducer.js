@@ -8,29 +8,30 @@ const initialState = {
 export const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
-	redusers: {
+	reducers: {
 		addItem(state, action) {
-			const findItem = state.items.find((obj) => obj.id === action.payload.id)
+			console.log(action.payload)
+			const findItem = state.itemsInCart.find((obj) => obj.id === action.payload.id)
 			if (findItem) {
 				findItem.count++
 			} else {
-				state.items.push({
+				state.itemsInCart.push({
 					...action.payload,
 					count: 1,
 					checkbox: true,
 				})
 			}
 		},
-		setItemInCart: (state, action) => {//добавить в корзину
-			state.itemsInCart.push(action.payload)
-		},
+		// setItemInCart: (state, action) => {//добавить в корзину
+		// 	state.itemsInCart.push(action.payload)
+		// },
 		deleteItemFromCart: (state, action) => {//удалить из корзины
 			state.itemsInCart = state.itemsInCart.filter(data => data.id !== action.payload)
 		},
 	}
 });
 
-export const { addItems, setItemInCart, deleteItemFromCart } = cartSlice.actions;
+export const { addItem, setItemInCart, deleteItemFromCart } = cartSlice.actions;
 export default cartSlice.reducer;
 
 
