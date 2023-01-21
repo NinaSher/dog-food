@@ -6,7 +6,7 @@ export default ({setUser, user}) => {
 	const navigate = useNavigate();
 	const logOut = (e) => {
 		e.preventDefault();
-		setUser(null);
+		setUser('null');
 		localStorage.removeItem("sm8");
 		navigate("/");
 	}
@@ -14,6 +14,6 @@ export default ({setUser, user}) => {
 	<h1>Личный кабинет</h1>
 	<img src={user.avatar} alt="avatar" />
 	<p>Привет, {user}</p>
-	<a href="" onClick={logOut} style={{color:"black"}}>Выйти</a>
+	<a href="#" onClick={logOut} style={{color:"black"}}>Выйти</a>
 	</>
 }

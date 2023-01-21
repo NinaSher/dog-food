@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import { Routes, Route,Switch, BrowserRouter } from "react-router-dom";
 import './style.css';
 
-//import products from "./assets/data.json";
-
-import Header from "./components/Header/header";
-import Footer from "./components/Footer/footer";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import Modal from "./components/Modal";
-import Topnav from "./components/Topnav/topnav";
+import Topnav from "./components/Topnav/Topnav";
 
 
 
@@ -17,6 +16,9 @@ import Profile from "./pages/Profile";
 import Product from "./pages/Product";
 
 import { Api } from "./Api";
+
+import { store } from "./store/store";
+
 
 
 const blocks = [];
@@ -73,7 +75,7 @@ const App = () => {
 	}, [goods])
 
 	return (
-		<>
+		<Provider store={store}>
 			<div className="container">
 				<Header
 					user={user}
@@ -83,7 +85,7 @@ const App = () => {
 					setModalActive={setModalActive}
 				/>
 				<main>
-				
+
 					<Topnav />
 					{/*user ? <Catalog data={products} /> : <Home data={blocks} />*/
 					}
@@ -91,14 +93,14 @@ const App = () => {
 						<Route path="/" element={<Home data={blocks} />} />
 						<Route path="/catalog" element={<Catalog data={visibleGoods} />} />
 						<Route path="/profile" element={<Profile setUser={setUser} user={user} />} />
-						<Route path="/catalog/:id" element={<Product/>}/>
+						<Route path="/catalog/:id" element={<Product />} />
 					</Routes>
 				</main>
 				<Footer />
 			</div>
 			<Modal isActive={modalActive} setState={setModalActive}
 				api={api} setToken={setToken} />
-		</>
+		</Provider>
 	)
 }
 

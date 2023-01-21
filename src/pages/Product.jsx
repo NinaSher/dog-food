@@ -1,23 +1,24 @@
+//страница товара
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import Review from "../components/Review/review";
-
-import { useQuery } from "@tanstack/react-query";
+import Review from "../components/Review/Review";
 
 
+import { useSelector } from "react-redux";
 
-export const PRODUCTS_QUERY_KEY = 'PRODUCTS_QUERY_KEY';
-function getProducts(values) {
-	const { data } = useQuery(
-		{ queryKey: PRODUCTS_QUERY_KEY, queryFn: getProducts(values.getProducts) },
-	)
-	return data
-}
+
+
+
 
 export default ({ }) => {
-	const { id } = useParams()
-	const [product, setProduct] = useState({});
+	const { id } = useParams();
+	const [setProduct] = useState({});
 	const [users, setUsers] = useState([]);
+	
+
+	
+	const products = useSelector(state => state.product.currentProduct);
+	if (!products) return null
 
 	let token = localStorage.getItem("sm8");
 	useEffect(() => {
@@ -33,13 +34,20 @@ export default ({ }) => {
 				})
 		}
 	})
+
+
 	return <>
-		<h1>{product.name || "Страница товара"}</h1>
+
+		<h1>{products.name || "Страница товара"}</h1>
 		<p>{id}</p>
+	
+		<p>{description}</p>
+		<button onClick={() => addItemCartHandler(id, pictures, price, discount, stock)} className={stylesIndex.card_button} type="button">в корзину</button>
 		<Link to="/catalog">Назад</Link>
 		<h2>Отзывы</h2>
 		<div className="reviews">
-			{product.reviews && product.reviews.length > 0 && product.reviews.map((el, i) => <Review {...el} key={i} />)}
+			{products.reviews && products.reviews.length > 0 && products.reviews.map((el, i) => <Review {...el} key={i} />)}
 		</div>
+
 	</>
 }
