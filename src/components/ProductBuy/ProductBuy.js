@@ -3,20 +3,23 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./productBuy.css";
 import { Button } from "../Button/Button";
-// import { setItemInCart } from "../../store/cartSlice/cartSlice";
+import { setItemInCart, deleteItemFromCart } from "../../store/cartSlice/reducer";
 
 
 
 export const ProductBuy = ({ data }) => {
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const items = useSelector((state) => state.cart.itemsInCart);
 	const isItemInCart = items.some((item) => item.id === product.id);
 
 
-	// const handleClick = (e) => {
-	// 	e.stopPropagation();
-	// 	dispatch(setItemInCart(data));
-	// };
+   const handleClick = (e) => {
+	e.stopPropagation();
+	if(isItemInCart){
+	dispatch(deleteItemFromCart(data.id));
+	} else{
+		dispatch(setItemInCart(data));
+	};
 
 	return (<>
 		<div className="product-buy">
@@ -31,18 +34,5 @@ export const ProductBuy = ({ data }) => {
 	)
 }
 
-
-export default ProductBuy;
-
-//<span className="product-buy__prise">{el.price} руб.</span>
-
-/*e.stopPropagation();
-		if (isItemInCart) {
-			dispatch(deleteItemFromCart(product.id));
-		} else {
-			dispatch(setItemInCart(product));
-		}
-		
-		
-		
-		*/
+}
+export default ProductBuy

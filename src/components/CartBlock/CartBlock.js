@@ -20,14 +20,16 @@ export const CartBlock = () => {
 
 	const handleGoToOrderClick = useCallback(() => {
 		setIsCartMenuVisible(false);
-		navigate.push('/orderItem');
+		navigate('/order');
 	}, [navigate]);
 
 
 	return (
 		<div className="catr-block">
 			<ItemsInCart quantity={(items.length)} />
-			<BiCartAlt size={25} className="cart-block__icon" onClick={() => setIsCartMenuVisible(!isCartMenuVisible)} />
+			<BiCartAlt size={25} 
+			className="cart-block__icon" 
+			onClick={() => setIsCartMenuVisible(!isCartMenuVisible)} />
 			{totalPrice > 0 ? <span className="cart-block__total-price">{totalPrice} руб.</span> : null}
 			{isCartMenuVisible && <CartMenu items={items} onClick={handleGoToOrderClick} />}
 		</div>

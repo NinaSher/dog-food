@@ -17,7 +17,7 @@ export default ({ }) => {
 	
 
 	
-	/*const products = useSelector(state => state.product.currentProduct);
+	const products = useSelector(state => state.product.currentProduct);
 	if (!products) return null
 
 	let token = localStorage.getItem("sm8");
@@ -49,5 +49,5 @@ export default ({ }) => {
 			{products.reviews && products.reviews.length > 0 && products.reviews.map((el, i) => <Review {...el} key={i} />)}
 		</div>
 
-	</>*/
+	</>
 }

@@ -1,35 +1,33 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-//import { deleteItemFromCart } from "../../store/cartSlice/reducer";
+import { useNavigate } from "react-router";
+import { addItem } from "../../store/cartSlice/reducer";
+import Button from "../Button/Button";
+import Counter from "../Counter/Counter";
 import { ProductBuy } from "../ProductBuy/ProductBuy";
 import "./index.css";
-import { addItem } from '../../store/cartSlice/reducer';
+
+
 
 
 export const Card = ({ id, pictures, name, discount, price, tags, wight, stock, like
 }) => {
+	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
-	const onClickAdd = (id, name) => {
-		const item = {
-			id,
-			price,
-			discount,
-			pictures,
-			name,
-			stock,
-			tags,
-			wight,
-		}
-		dispatch(addItem(item))
+
+   const onClickAdd = (id, name) => {
+   const item = {
+      id,
+      price,
+      discount,
+      pictures,
+      name,
+      stock,
+   }
+   dispatch(addItem(item));
+	navigate.push(`/catalog/${el._id}`);
 	}
-
-	/*const addItem = (event) => {
-		dispatch(setItemInCart(item));
-
-		event.preventDefault();
-		console.log(id)
-	}*/
 
 	const discountFunc = (p, discont) => Math.round((p - p * discont * 0.01) / 100) * 100
 
@@ -62,24 +60,12 @@ export const Card = ({ id, pictures, name, discount, price, tags, wight, stock, 
 				{' '}
 				₽
 			</h4>
-			{/*<div className="card__buy">*/}
-			{/*<ProductBuy onClickAdd={() => addItem(id, name, pictures, price, discount, stock)} />*/}
-
 			
-
-			<button className="card__buy" type="button" onClick={() => onClickAdd(id, name)}>В корзину</button> 
-
-			{/*<ProductBuy onClick={() => onClickAdd(id, name)}/>*/}
-
-			{/*</div>*/}
+				<button className="btn" type="button" onClick={() => onClickAdd(id, name)}>В корзину </button>
+			
 		</div>
 	</>
 };
 export default Card;
-
-
-
-
-
 
 

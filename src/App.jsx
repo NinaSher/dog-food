@@ -14,10 +14,12 @@ import Home from "./pages/Home.jsx";
 import Catalog from "./pages/Catalog.jsx";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
+import { OrderPage } from "./pages/OrderPage/OrderPage";
 
 import { Api } from "./Api";
 
 import { store } from "./store/store";
+
 
 
 
@@ -31,6 +33,7 @@ const App = () => {
 	const [goods, setGoods] = useState([]);
 	const [visibleGoods, setVisibleGoods] = useState(goods);
 
+	//const [products] = useState([])
 
 	useEffect(() => {
 		//console.log("");
@@ -83,6 +86,7 @@ const App = () => {
 					goods={goods}
 					searchGoods={setVisibleGoods}
 					setModalActive={setModalActive}
+					//products={products}
 				/>
 				<main>
 
@@ -93,7 +97,8 @@ const App = () => {
 						<Route path="/" element={<Home data={blocks} />} />
 						<Route path="/catalog" element={<Catalog data={visibleGoods} />} />
 						<Route path="/profile" element={<Profile setUser={setUser} user={user} />} />
-						<Route path="/catalog/:id" element={<Product />} />
+						<Route path="/catalog/:id" element={<Product/>} />
+						<Route path="/order" element={<OrderPage/>}/>
 					</Routes>
 				</main>
 				<Footer />

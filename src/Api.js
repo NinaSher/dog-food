@@ -33,8 +33,11 @@ class Api {
 			headers: {
 				"authorization": `Bearer ${this.token}`
 			}
-		})
+		});
 	}
-}
+	getProductsByIds(ids){
+		return Promise.all (ids.map(id => fetch (`https://domain.ru/products/${id}`).then(res => res.json())))
+	}
+	}
 
 export {Api};
