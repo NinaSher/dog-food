@@ -1,20 +1,26 @@
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { addItem } from "../../store/cartSlice/reducer";
-import Button from "../Button/Button";
-import Counter from "../Counter/Counter";
-import { ProductBuy } from "../ProductBuy/ProductBuy";
 import "./index.css";
 
 
 
-
-export const Card = ({ id, pictures, name, discount, price, tags, wight, stock, like
+export const Card = ({ 
+	id, 
+	pictures, 
+	name, 
+	discount, 
+	price, 
+	tags, 
+	wight, 
+	stock, 
+	like
 }) => {
+	
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-
 
    const onClickAdd = (id, name) => {
    const item = {
@@ -25,11 +31,13 @@ export const Card = ({ id, pictures, name, discount, price, tags, wight, stock, 
       name,
       stock,
    }
+
    dispatch(addItem(item));
-	navigate.push(`/catalog/${el._id}`);
+	navigate(`/catalog/${el._id}`);
+	
 	}
 
-	const discountFunc = (p, discont) => Math.round((p - p * discont * 0.01) / 100) * 100
+	const discountFunc = (price, discont) => Math.round((price - price * discont * 0.01) / 100) * 100
 
 
 	return <>
@@ -41,7 +49,7 @@ export const Card = ({ id, pictures, name, discount, price, tags, wight, stock, 
 						: <i className="fa-regular fa-heart"></i>
 				}
 			</span>
-			<img src={pictures} alt={name} style={{ height: "100px" }} />
+			<img src={pictures} alt="изображение" style={{ height: "100px" }} />
 			<h3>{name}</h3>
 			<div className='card__discount'>
 				-
@@ -61,11 +69,9 @@ export const Card = ({ id, pictures, name, discount, price, tags, wight, stock, 
 				₽
 			</h4>
 			
-				<button className="btn" type="button" onClick={() => onClickAdd(id, name)}>В корзину </button>
+				<button className="btn" type="secondary" onClick={() => onClickAdd(id, name)}>В корзину </button>
 			
 		</div>
 	</>
 };
 export default Card;
-
-

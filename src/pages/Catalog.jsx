@@ -12,7 +12,6 @@ export default ({data}) => {
 	{data.length > 0
 	? <>
 	<div className="cards">
-		{/*data.map((el, i) => <Link to={`/catalog/${el._id}`} key={el._id}>*/}
 		{data.map((el, i) => 
 		<Card 
 		key={"card_" + i} 

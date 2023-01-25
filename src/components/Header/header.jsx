@@ -32,4 +32,3 @@ export default ({user, setUser, goods, searchGoods, setModalActive}) => {
 			</div>
 		</header>
 }
-

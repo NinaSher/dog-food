@@ -8,8 +8,8 @@ class Api {
 		this.token = token;
 	}
 
-	
-	signUp(body){ //регистрация
+
+	signUp(body) { //регистрация
 		body.group = this.group;
 		return fetch(`${this.path}/signup`, {
 			method: "POST",
@@ -19,8 +19,8 @@ class Api {
 			body: JSON.stringify(body)
 		});
 	}
-	signIn(body){ //авторизация
-		return fetch (`${this.path}/signin`,{
+	signIn(body) { //авторизация
+		return fetch(`${this.path}/signin`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "appLication/json"
@@ -28,16 +28,31 @@ class Api {
 			body: JSON.stringify(body)
 		});
 	}
-	getProducts(){//получение продукта
+	getProducts() {//получение продукта
 		return fetch(`${this.path}/products`, {
 			headers: {
 				"authorization": `Bearer ${this.token}`
 			}
 		});
 	}
-	getProductsByIds(ids){
-		return Promise.all (ids.map(id => fetch (`https://domain.ru/products/${id}`).then(res => res.json())))
-	}
+
+	async getCardItem(search) { // вывод карточек
+		const response = await fetch(`${this.baseUrl}/products/?${new URLSearchParams(search).toString()}`, {
+			headers: {
+				authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+				'Content-Type': 'application/json',
+			},
+		})
+		return response.json()
 	}
 
-export {Api};
+	getProductsByIds(ids) {
+		return Promise.all(ids.map(id => fetch(`https://domain.ru/products/${id}`).then(res => res.json())))
+	}
+	//getProductByIDs = (ids) => {
+	//const token = getUserTokenFromLS()
+	//return axios.all(ids.map((id) => axios.get(`${this.baseUrl}/products/${id}`, { headers: { ...this.headers, authorization: `Bearer ${token}` } })))
+	//}
+}
+
+export { Api };

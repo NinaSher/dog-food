@@ -4,9 +4,12 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	color: white;
 
 }
-
+.cart-item__image{
+	size: 20px;
+}
 .cart-item__price {
 	display: flex;
 	align-items: center;

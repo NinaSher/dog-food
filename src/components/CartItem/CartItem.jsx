@@ -5,7 +5,12 @@ import { deleteItemFromCart } from "../../store/cartSlice/reducer";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import "./cartItem.css";
 
-export const CartItem = ({ name, price, id }) => {
+
+export const CartItem = ({
+	name,
+	price,
+	id,
+	pictures }) => {
 	const dispatch = useDispatch();
 
 	const handleDeleteClick = () => {
@@ -14,7 +19,10 @@ export const CartItem = ({ name, price, id }) => {
 
 	return (
 		<div className="cart-item">
-			<span>{name} </span>
+			<div className="cart-item__image">
+				<img src={pictures} style={{ height: "100px" }} />
+				<span>{name}</span>
+			</div>
 			<div className="cart-item__price">
 				<span>{price} руб.</span>
 				<AiOutlineCloseCircle

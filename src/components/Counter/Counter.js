@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+/*import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const Counter = () => {
+	const dispatch=useDispatch();
 	const [count, updateCnt] = useState(0);
 	const countDec = (e) => {
 		e.preventDefault();
@@ -13,9 +15,9 @@ const Counter = () => {
 		updateCnt(count + 1);
 	};
 	return <>
-		<button onClick={countDec}>-</button>
-		{count}
-		<button onClick={countInc}>+</button>
+		<button onClick={() => dispatch(decrementQuantity(id))}>-</button>
+		{quantity}
+		<button onClick={() => dispatch(incrementQuantity(id))}>+</button>
 	</>
-}
-export default Counter;
+}*/
+//export default Counter;

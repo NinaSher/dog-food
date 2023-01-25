@@ -13,27 +13,59 @@ export const cartSlice = createSlice({
 			console.log(action.payload)
 			const findItem = state.itemsInCart.find((obj) => obj.id === action.payload.id)
 			if (findItem) {
-				findItem.count++
+				findItem.quantity++
 			} else {
 				state.itemsInCart.push({
 					...action.payload,
-					count: 1,
-					checkbox: true,
+					quantity: 1,
 				})
 			}
 		},
-		// setItemInCart: (state, action) => {//добавить в корзину
-		// 	state.itemsInCart.push(action.payload)
-		// },
+		minusItem(state, action) {
+			const itemInCart = state.cart.find((obj) => obj.id === action.payload)
+			itemInCart.quantity--
+
+			state.totalPrice = state.cart.reduce((sum, obj) => {
+				if (obj.discount) {
+					const priceCart = obj.price - ((obj.price / obj.discount))
+					return (priceCart * obj.quantity) + sum
+				}
+				return (obj.price * obj.quantity) + sum
+			}, 0)
+		},
+
+		removeItem(state, action) {
+			state.items = state.items.filter((cart) => cart.id !== action.payload)
+			state.totalPrice = state.items.reduce((sum, obj) => {
+				if (obj.discount) {
+					const priceCart = obj.price - ((obj.price / obj.discount))
+					return (priceCart * obj.count) + sum
+				}
+				return (obj.price * obj.count) + sum
+			}, 0)
+		},
+
 		deleteItemFromCart: (state, action) => {//удалить из корзины
 			state.itemsInCart = state.itemsInCart.filter(data => data.id !== action.payload)
 		},
+		clearItems(state) {
+			state.cart = []
+			state.totalPrice = 0
+		},
 	}
-});
+})
 
-export const { addItem, setItemInCart, deleteItemFromCart } = cartSlice.actions;
-export default cartSlice.reducer;
+export const {
+	addItem,
+	removeItem,
+	minusItem,
+	clearItems,
+	setCheckbox,
+	toggleCheckAll,
+	deleteItemFromCart
+} = cartSlice.actions
 
-
+export default cartSlice.reducer
 //totalPrise цена
 // items массив с id карточек
+//quantity кол-во

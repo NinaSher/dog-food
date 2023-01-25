@@ -14,7 +14,8 @@ import Home from "./pages/Home.jsx";
 import Catalog from "./pages/Catalog.jsx";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
-import { OrderPage } from "./pages/OrderPage/OrderPage";
+import {Cart} from "./pages/Cart/Cart";
+
 
 import { Api } from "./Api";
 
@@ -98,7 +99,7 @@ const App = () => {
 						<Route path="/catalog" element={<Catalog data={visibleGoods} />} />
 						<Route path="/profile" element={<Profile setUser={setUser} user={user} />} />
 						<Route path="/catalog/:id" element={<Product/>} />
-						<Route path="/order" element={<OrderPage/>}/>
+						<Route path="/order" element={<Cart/>}/>
 					</Routes>
 				</main>
 				<Footer />
@@ -106,6 +107,7 @@ const App = () => {
 			<Modal isActive={modalActive} setState={setModalActive}
 				api={api} setToken={setToken} />
 		</Provider>
+		
 	)
 }
 

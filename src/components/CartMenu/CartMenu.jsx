@@ -1,7 +1,6 @@
 //корзина (выпадающее окно)
 import React from "react";
 import { useSelector } from "react-redux";
-import { Button } from "../Button/Button";
 import { CartItem } from "../CartItem/CartItem";
 import { calcTotalPrice } from "../utils";
 import "./cartMenu.css";
@@ -35,7 +34,7 @@ export const CartMenu = ({onClick}) => {
 						<span>Итого:</span>
 						<span>{calcTotalPrice(items)} руб.</span>
 					</div>
-					<button className="btn-primary" type="primary" size="m" onClick={onClick}>
+					<button className="btn" type="primary" size="m" onClick={onClick}>
 						Оформить заказ
 					</button>
 				</div>
@@ -43,6 +42,4 @@ export const CartMenu = ({onClick}) => {
 		</div>
 	);
 };
-
-
 
