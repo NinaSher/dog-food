@@ -9,9 +9,6 @@ import "./cartMenu.css";
 export const CartMenu = ({onClick}) => {
 	const items = useSelector((state) => state.cart.itemsInCart);
 
-
-	
-
 	return (
 		<div className="cart-menu">
 			<div className="cart-menu__list">

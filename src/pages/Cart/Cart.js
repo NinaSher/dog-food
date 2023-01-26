@@ -1,35 +1,35 @@
 //страница заказа
 import { useQuery } from '@tanstack/react-query'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
-import { CartItem } from '../../components/CartItem/CartItem'
-//import OrderItem from '../../components/OrderItem/OrderItem'
+import { useSelector } from 'react-redux'
+import { Link} from 'react-router-dom'
 import { Api } from '../../Api'
 import './cart.css'
 
+import {OrderItem} from '../../components/OrderItem/OrderItem';
+import { calcTotalPrice, enumerate } from "../../components/utils"
 
-import { calcTotalPrice } from "../../components/utils"
 
 export const PRODUCT__CARD__KEY = ['PRODUCT__CARD__KEY']
 
 const getOrderItemQueryKey = (cartItemsId) => PRODUCT__CARD__KEY.concat(cartItemsId)
 
 export function Cart() {
-	const dispatch = useDispatch();
 	const cartId = useSelector((store) => store.cart.items)
 	const items = useSelector((state) => state.cart.itemsInCart);
 
+const cart = useSelector((store)=> store.cart)
+const {data: products} = useQuery({
+	queryKey: cart,
+	queryFn: () => Api.getProductsById(cart.map((product)=> product.id)),
+})
+console.log(products)
 	if (items.length < 1) {
-		return <><h1>Ваша корзина пуста!</h1>
-		<Link to="/catalog">Вернуться в каталог</Link></>
-	}
+		return (
+			<>
+		<h1>Ваша корзина пуста!</h1>
+		<Link to="/catalog">Вернуться в каталог</Link>
+		</>)}
 
-	
-
-	const {data}  = useQuery({
-		queryKey: getOrderItemQueryKey(cartId?.map((card) => card.id)),
-		queryFn: () => Api.getProductsById(cartId?.map((card) => card.id)),
-	})
 
 	return ( 
 		<><div className='cart-button__left'>
@@ -52,18 +52,14 @@ export function Cart() {
 
 							</header>
 							<section className='product'>
-								{items?.map((el) => (
-									<CartItem key={el['_id']}  
-									pictures={el.pictures}
-									name={el.name}
-									quantity={el.quantity}
-									/>
-								))}
+								
+								{ items.map(product => <OrderItem  product={product}
+								/>)}
 							</section>
 							<footer className='cart-footer'>
 								<span>Итого:</span>
 								<div className='cart-footer__price'>
-									<span>{calcTotalPrice(items)} руб.</span>
+									<span>{items.length} {enumerate(items.length,['товар', 'товара', 'товаров'])} на сумму {calcTotalPrice(items)} руб.</span>
 								</div>
 							</footer>
 						</section>
@@ -74,3 +70,13 @@ export function Cart() {
 				)
 				};
 
+				{/*
+					items?.map((el) => (
+						<CartItem key={el['_id']}  
+						pictures={el.pictures}
+						name={el.name}
+						quantity={el.quantity}
+					/>
+				))
+				<span>{calcTotalPrice(items)} руб.</span>
+					*/}

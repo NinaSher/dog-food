@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { addItem } from "../../store/cartSlice/reducer";
 import "./index.css";
 
-
+import {ProductBuy} from '../ProductBuy/ProductBuy';
 
 export const Card = ({ 
 	id, 
@@ -33,7 +33,7 @@ export const Card = ({
    }
 
    dispatch(addItem(item));
-	navigate(`/catalog/${el._id}`);
+	navigate('/catalog/${el._id}');
 	
 	}
 
