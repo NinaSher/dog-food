@@ -13,7 +13,9 @@ export const OrderItem = ({product}) => {
 	return (
 		<div className="order-item">
 			<div className="order-item__title">
+			<img src={product.pictures} alt="изображение" style={{ height: "100px" }} />
 				<span>{product.name}</span>
+				
 			</div>
 			<div className="orser-item__price">
 				<span>{product.price}</span>

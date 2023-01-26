@@ -11,43 +11,43 @@ import { useSelector } from "react-redux";
 
 
 export default ({ }) => {
-	// const { id } = useParams();
+	 const { id } = useParams();
 	const [setProduct] = useState({});
 	const [users, setUsers] = useState([]);
 	
 
 	
-// 	const products = useSelector(state => state.product.currentProduct);
-// 	if (!products) return null
+ 	const products = useSelector(state => state.product.currentProduct);
+ 	if (!products) return null
 
-// 	let token = localStorage.getItem("sm8");
-// 	useEffect(() => {
-// 		if (token) {
-// 			fetch(`https://api.react-learning.ru/products/${id}`, {
-// 				headers: {
-// 					authorization: `Bearer ${token}`
-// 				}
-// 			})
-// 				.then(res => res.json())
-// 				.then(data => {
-// 					setProduct(data);
-// 				})
-// 		}
-// 	})
+ 	let token = localStorage.getItem("sm8");
+ 	useEffect(() => {
+		if (token) {
+			fetch(`https://api.react-learning.ru/products/${id}`, {
+				headers: {
+ 					authorization: `Bearer ${token}`
+				}
+ 			})
+ 				.then(res => res.json())
+ 				.then(data => {
+ 					setProduct(data);
+ 				})
+ 		}
+ 	})
 
 
-// 	return <>
+	return <>
 
-// 		<h1>{products.name || "Страница товара"}</h1>
-// 		<p>{id}</p>
+		<h1>{products.name || "Страница товара"}</h1>
+ 		<p>{id}</p>
 	
-// 		<p>{description}</p>
-// 		<button onClick={() => addItemCartHandler(id, pictures, price, discount, stock)} className={stylesIndex.card_button} type="button">в корзину</button>
-// 		<Link to="/catalog">Назад</Link>
-// 		<h2>Отзывы</h2>
-// 		<div className="reviews">
-// 			{products.reviews && products.reviews.length > 0 && products.reviews.map((el, i) => <Review {...el} key={i} />)}
-// 		</div>
+		<p>{description}</p>
+		<button onClick={() => addItemCartHandler(id, pictures, price, discount, stock)} className="btn" type="button">в корзину</button>
+		<Link to="/catalog">Назад</Link>
+		<h2>Отзывы</h2>
+ 		<div className="reviews">
+ 			{products.reviews && products.reviews.length > 0 && products.reviews.map((el, i) => <Review {...el} key={i} />)}
+		</div>
 
 // 	</>
 }

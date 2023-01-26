@@ -16,7 +16,7 @@ export const Card = ({
 	tags, 
 	wight, 
 	stock, 
-	like
+	like,totalPrice,
 }) => {
 	
 	const navigate = useNavigate()
@@ -30,10 +30,11 @@ export const Card = ({
       pictures,
       name,
       stock,
+		
    }
 
    dispatch(addItem(item));
-	navigate('/catalog/${el._id}');
+	//navigate('/product/${el._id}');
 	
 	}
 
@@ -69,8 +70,10 @@ export const Card = ({
 				₽
 			</h4>
 			
-				<button className="btn" type="secondary" onClick={() => onClickAdd(id, name)}>В корзину </button>
+				<button className="btn" type="secondary" onClick={() => onClickAdd(id,  name, totalPrice, pictures)}>В корзину </button>
 			
+				<button className="btn" type="secondary" onClick={()=> {
+               navigate(`/catalog/${id}`)}}>Подробнее о товаре</button>
 		</div>
 	</>
 };

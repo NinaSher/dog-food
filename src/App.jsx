@@ -34,7 +34,7 @@ const App = () => {
 	const [goods, setGoods] = useState([]);
 	const [visibleGoods, setVisibleGoods] = useState(goods);
 
-	//const [products] = useState([])
+	const [products] = useState([])
 
 	useEffect(() => {
 		//console.log("");
@@ -87,7 +87,7 @@ const App = () => {
 					goods={goods}
 					searchGoods={setVisibleGoods}
 					setModalActive={setModalActive}
-					//products={products}
+					products={products}
 				/>
 				<main>
 

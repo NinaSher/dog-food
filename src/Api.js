@@ -36,6 +36,16 @@ class Api {
 		});
 	}
 
+	getProductItem = (id) => fetch(
+      `${this.baseUrl}/products/${id}`,
+      {
+         method: 'GET',
+         headers: {
+         'Content-Type': 'application/json',
+         authorization: `Bearer ${token}`,
+         },
+      },
+   )
 	async getCardItem(search) { // вывод карточек
 		const response = await fetch(`${this.baseUrl}/products/?${new URLSearchParams(search).toString()}`, {
 			headers: {
