@@ -2,12 +2,12 @@ import React from "react";
 import './header.css';
 import { Link } from "react-router-dom";
 import  Search from "../Search/Search";
-import ProductBuy from "../ProductBuy/ProductBuy";
 import { CartBlock } from "../CartBlock/CartBlock";
-//import { useSelector } from "react-redux";
+
+
 
 export default ({user, setUser, goods, searchGoods, setModalActive}) => {
-//const {iteems, totalPrise} = useSelector(state => state.CartBlok);
+
 	
 	const logIn = (e) => {
 			e.preventDefault();

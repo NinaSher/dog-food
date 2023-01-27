@@ -1,3 +1,4 @@
+
 .section-cart{
 	padding: 70px 0;
 }
@@ -54,4 +55,53 @@
 .cart-button__left{
 	margin-bottom: 40px;
 	padding-left: 20px;
+}
+
+.clear {
+	width: 100px;
+	background-color: #ff4400b8;
+	border: 1px solid gray;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.counter {
+	display: flex;
+	gap: 10px;
+	margin-left: 50px;
+}
+
+.priceActive {
+	text-decoration: line-through;
+	color: rgb(148, 147, 147);
+}
+
+.price {
+	text-decoration: none;
+	font-weight: 700;
+}
+
+.trash {
+	background-color: rgba(255, 252, 252, 0);
+	border: none;
+	cursor: pointer;
+}
+
+.ordering{
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	grid-column: 1;
+	align-items: center;
+}
+
+.checkbox {
+	height: 15px;
+	box-shadow: none;
+}
+
+.checkboxContainer {
+	height: 20px;
+	box-shadow: none;
+	text-align: start;
 }

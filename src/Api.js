@@ -35,15 +35,15 @@ class Api {
 	}
 
 	getProductItem = (id) => fetch(
-      `${this.baseUrl}/products/${id}`,
-      {
-         method: 'GET',
-         headers: {
-         'Content-Type': 'application/json',
-         authorization: `Bearer ${token}`,
-         },
-      },
-   )
+		`${this.baseUrl}/products/${id}`,
+		{
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				authorization: `Bearer ${token}`,
+			},
+		},
+	)
 	async getCardItem(search) { // вывод карточек
 		const response = await fetch(`${this.baseUrl}/products/?${new URLSearchParams(search).toString()}`, {
 			headers: {
@@ -62,6 +62,16 @@ class Api {
 	//return axios.all(ids.map((id) => axios.get(`${this.baseUrl}/products/${id}`, { headers: { ...this.headers, authorization: `Bearer ${token}` } })))
 	//}
 }
+{/*setLike(id, isLike) {
+	return fetch(`${this.path}/products/likes/${id}`, {
+		method: isLike ? "DELETE" : "PUT",
+		headers: {
+			"authorization": `Bearer ${this.token}`
+		}
+	})
+}*/}
+
+
 
 export { Api };
 

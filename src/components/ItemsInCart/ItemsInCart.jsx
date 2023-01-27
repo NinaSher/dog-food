@@ -3,11 +3,11 @@ import React from 'react';
 import './ItemsInCart';
 
 export const ItemsInCart = ({
-	quantity = 0
+	count = 0
 }) => {
-	return quantity > 0 ? (
+	return count > 0 ? (
 		<div className="items-in-cart">
-			{quantity}
+			{count}
 		</div>
 	) : null
 }

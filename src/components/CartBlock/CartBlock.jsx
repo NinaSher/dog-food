@@ -17,6 +17,7 @@ export const CartBlock = () => {
 	const navigate = useNavigate();
 	const totalPrice = calcTotalPrice(items);
 
+	
 
 	const handleGoToOrderClick = useCallback(() => {
 		setIsCartMenuVisible(false);
@@ -26,7 +27,7 @@ export const CartBlock = () => {
 
 	return (
 		<div className="catr-block">
-			<ItemsInCart quantity={(items.length)} />
+			<ItemsInCart count={(items.length)} />
 			<BiCartAlt size={25} 
 			className="cart-block__icon" 
 			onClick={() => setIsCartMenuVisible(!isCartMenuVisible)} />
