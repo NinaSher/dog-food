@@ -38,6 +38,9 @@ console.log(products)
 	<div className='cart-catalog'>
 	<Link to="/catalog">Вернуться в каталог</Link>
 	</div>
+	<div className='cart-catalog'>
+	<Link to="/profile">Личный кабинет</Link>
+	</div>
 		<section className="section-cart">
 				<header className='section-cart__header'>
 					<h1>Корзина товаров</h1>

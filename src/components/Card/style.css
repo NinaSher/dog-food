@@ -18,6 +18,10 @@
 	color: black;
 	font-size: 1.4em;
 }
+.card__img {
+	height: 120px;
+	background: no-repeat center / contain;
+}
 .card__pic {
 	height: 120px;
 	display: flex;

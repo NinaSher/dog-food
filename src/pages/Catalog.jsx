@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../components/Card";
 import {Link} from "react-router-dom";
 import {EmojiFrown} from "react-bootstrap-icons";
-import { isEditable } from "@testing-library/user-event/dist/utils";
+
 
 
 export default ({data}) => {

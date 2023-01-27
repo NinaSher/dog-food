@@ -21,18 +21,6 @@ export const cartSlice = createSlice({
 				})
 			}
 		},
-		minusItem(state, action) {
-			const findItem = state.itemsInCart.find((obj) => obj.id === action.payload)
-			findItem.quantity--
-
-			state.totalPrice = state.itemsInCart.reduce((sum, obj) => {
-				if (obj.discount) {
-					const priceCart = obj.price - ((obj.price / obj.discount))
-					return (priceCart * obj.quantity) + sum
-				}
-				return (obj.price * obj.quantity) + sum
-			}, 0)
-		},
 
 		removeItem(state, action) {
 			state.itemsInCart = state.itemsInCart.filter((cart) => cart.id !== action.payload)
@@ -57,7 +45,6 @@ export const cartSlice = createSlice({
 export const {
 	addItem,
 	removeItem,
-	minusItem,
 	clearItems,
 	setCheckbox,
 	toggleCheckAll,

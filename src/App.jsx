@@ -27,14 +27,14 @@ import { store } from "./store/store";
 const blocks = [];
 
 const App = () => {
-	const [user, setUser] = useState(localStorage.getItem('sm8'));
+	const [user, setUser] = useState(localStorage.getItem('sm8',true));
 	const [token, setToken] = useState(localStorage.getItem('token'));
 	const [modalActive, setModalActive] = useState(false);
 	const [api, setApi] = useState(new Api(token));
 	const [goods, setGoods] = useState([]);
 	const [visibleGoods, setVisibleGoods] = useState(goods);
-
-	const [products] = useState([])
+	const [fav, setFav] = useState([]);
+	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
 		//console.log("");
@@ -77,6 +77,12 @@ const App = () => {
 	useEffect(() => {
 		setVisibleGoods(goods);
 	}, [goods])
+
+	useEffect(() => {
+		const f = goods.filter(el => el.likes.includes(user._id))
+		setFav(f);
+		setProducts(goods);
+  }, [goods])
 
 	return (
 		<Provider store={store}>

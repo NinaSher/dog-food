@@ -1,11 +1,11 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { addItem } from "../../store/cartSlice/reducer";
-import "./index.css";
-
-import {ProductBuy} from '../ProductBuy/ProductBuy';
+import "./style.css";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import {increaseCountCart, decreaseCountCart} from "../../store/cartSlice/reducer"
 
 export const Card = ({ 
 	id, 
@@ -37,8 +37,9 @@ export const Card = ({
 	//navigate('/product/${el._id}');
 	
 	}
-
+	
 	const discountFunc = (price, discont) => Math.round((price - price * discont * 0.01) / 100) * 100
+
 
 
 	return <>
@@ -69,12 +70,17 @@ export const Card = ({
 				{' '}
 				₽
 			</h4>
+		
+
 			
+
 				<button className="btn" type="secondary" onClick={() => onClickAdd(id,  name, totalPrice, pictures)}>В корзину </button>
 			
-				<button className="btn" type="secondary" onClick={()=> {
-               navigate(`/catalog/${id}`)}}>Подробнее о товаре</button>
+				<Link to={`/catalog/${id}`} key={id}>Подробнее о товаре</Link>
 		</div>
 	</>
 };
 export default Card;
+
+
+

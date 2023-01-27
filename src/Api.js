@@ -1,6 +1,4 @@
 
-
-
 class Api {
 	constructor(token) {
 		this.path = "https://api.react-learning.ru";
@@ -66,3 +64,5 @@ class Api {
 }
 
 export { Api };
+
+
