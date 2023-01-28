@@ -77,11 +77,12 @@ export const cartSlice = createSlice({
 	},
 
 	deleteItemFromCart: (state, action) => {//удалить из корзины
-		state.itemsInCart = state.items.filter(obj => obj.id !== action.payload)
+		state.itemsInCart = state.itemsInCart.filter((obj) => obj.id !== action.payload)
 	},
-	clearItemsInCart() {
-		return []
-	},
+	clearItems(state) {
+      state.items = []
+      state.totalPrice = 0
+   },
 }
 )
 

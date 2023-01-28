@@ -24,6 +24,6 @@ size: 20px;
 	grid-column-start: 3;
 }
 .order-item__quantity{
-	grid-column-start: 3;
+	grid-column-start: 1;
 	margin: 5px;
 }

@@ -10,7 +10,7 @@ import { calcTotalPrice, enumerate } from "../../components/utils"
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleCheckAll } from '../../store/cartSlice/reducer'
-import { setCheckboxEl } from '../../store/cartSlice/reducer'
+import { clearItems } from '../../store/cartSlice/reducer'
 
 
 export const PRODUCT__CARD__KEY = ['PRODUCT__CARD__KEY']
@@ -47,8 +47,12 @@ export function Cart({ api }) {
 			return objId.count
 		}
 	}
+	const onClickClearCart = () => {
+		dispatch(clearItems())
+	}
+	const { totalPrice } = useSelector((store) => store.cart)
 
-	const dispatch = useDispatch()
+	//const dispatch = useDispatch() при добавлении чекбокса начинается бесконечный цикл, из-за корзины в хедере и страницы корзины, идет наложение
 	{/*const allCheckboxes = () => {
 		dispatch(toggleCheckAll())
 		setChicket((prev) => !prev)
@@ -71,14 +75,14 @@ export function Cart({ api }) {
 		}
 	}*/}
 
-	{/*const checkedId = (id) => {
+	/*const checkedId = (id) => {
 		const checkedElId = items.find((el) => el.id === id)
 		if (checkedElId) {
-		  return checkedElId.checkbox
+		return checkedElId.checkbox
 		}
 		console.log(checkedElId.checkbox)
 		return checkedElId.checkbox
-	 }*/}
+	}*/
 
 	return (
 		<><div className='cart-button__left'>
@@ -100,13 +104,14 @@ export function Cart({ api }) {
 							<header className='cart-header'>
 								<div className='cart-header__title'>наименование</div>
 								<div className='cart-header__cost'>стоимость</div>
-								
+
 
 							</header>
 							{data ? data.map((el) => (
+								
 								<>
 									{/*}<input type='checkbox' checked={checkboxEl(el['_id'])} /> */}
-									<OrderItem
+									<OrderItem key={el['_id']}
 										el={el}
 										//checkboxEl={checkboxEl}
 										quantity={quantity}
@@ -117,10 +122,16 @@ export function Cart({ api }) {
 							<footer className='cart-footer'>
 								<span>Итого:</span>
 								<div className='cart-footer__price'>
-									<span>{items.length} {enumerate(items.length, ['товар', 'товара', 'товаров'])} на сумму {calcTotalPrice(items)} руб.</span>
+									{' '}
+									{totalPrice}
+									{/*<span>{ items.length} {enumerate( items.length, ['товар', 'товара', 'товаров'])} на сумму {calcTotalPrice( items)} руб.</span>*/}
 								</div>
 							</footer>
+							<button className="btn" type="button" onClick={() => onClickClearCart()}>
+								Очистить Корзину
+							</button>
 						</section>
+
 					</div>
 				</div>
 			</section>
@@ -128,13 +139,4 @@ export function Cart({ api }) {
 	)
 };
 
-{/*
-					items?.map((el) => (
-						<CartItem key={el['_id']}  
-						pictures={el.pictures}
-						name={el.name}
-						quantity={el.quantity}
-					/>
-				))
-				<span>{calcTotalPrice(items)} руб.</span>
-					*/}
+

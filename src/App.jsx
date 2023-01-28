@@ -19,7 +19,7 @@ import {Cart} from "./pages/Cart/Cart";
 
 import { Api } from "./Api";
 
-import { store } from "./store/store";
+import store, { persistor } from "./store/store";
 
 
 

@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import "./orderItem.css";
-import { addItem, deleteItemFromCart } from "../../store/cartSlice/reducer";
+import { addItem, deleteItemFromCart,minusItem } from "../../store/cartSlice/reducer";
 
 export const OrderItem = ({ el, quantity }) => {
 	const dispatch = useDispatch();
@@ -12,6 +12,17 @@ export const OrderItem = ({ el, quantity }) => {
 	}
 	console.log(el['_id'])
 
+	const onClickPlus = (id) => {
+		dispatch(
+			addItem({
+				id,
+			}),
+		)
+	}
+
+	const onClickMinus = (id) => {
+		dispatch(minusItem(id))
+	}
 
 	return (
 
@@ -25,7 +36,7 @@ export const OrderItem = ({ el, quantity }) => {
 				<div className="orser-item__price">{el.price}</div>
 				{quantity(el['_id']) === 1 ? (
 					<button
-					size={"s"}
+						size={"s"}
 						className='btn'
 						type="button"
 						disabled
@@ -34,7 +45,7 @@ export const OrderItem = ({ el, quantity }) => {
 					</button>
 				) : (
 					<button
-					size={"s"}
+						size={"s"}
 						className='btn'
 						type="button"
 						onClick={() => {
@@ -49,7 +60,7 @@ export const OrderItem = ({ el, quantity }) => {
 				</div>
 				{quantity(el['_id']) === el.stock ? (
 					<button
-					size={"s"}
+						size={"s"}
 						className='btn'
 						type="button"
 						disabled
@@ -58,18 +69,18 @@ export const OrderItem = ({ el, quantity }) => {
 					</button>
 				) : (
 					<button
-					size={"s"}
+						size={"s"}
 						className="btn"
 						type="button"
 						onClick={() => {
-							addItem(el['_id'])
+							onClickPlus(el['_id'])
 						}}
 					>
 						+
 					</button>
 
 				)}
-				
+
 				<div className="order-item__delete">
 					<AiOutlineCloseCircle
 						size={25}
