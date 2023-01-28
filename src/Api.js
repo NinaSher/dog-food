@@ -54,25 +54,14 @@ class Api {
 		return response.json()
 	}
 
-	getProductsByIds(ids) {
-		return Promise.all(ids.map(id => fetch(`https://domain.ru/products/${id}`).then(res => res.json())))
+	getProductsById(ids) { // корзина
+		return Promise.all(ids.map((id) => fetch(`${this.path}/products/${id}`, {
+			headers: {
+				authorization: `Bearer ${this.token}`,
+				'Content-Type': 'application/json',
+			},
+		}).then((res) => res.json())))
 	}
-	//getProductByIDs = (ids) => {
-	//const token = getUserTokenFromLS()
-	//return axios.all(ids.map((id) => axios.get(`${this.baseUrl}/products/${id}`, { headers: { ...this.headers, authorization: `Bearer ${token}` } })))
-	//}
 }
-{/*setLike(id, isLike) {
-	return fetch(`${this.path}/products/likes/${id}`, {
-		method: isLike ? "DELETE" : "PUT",
-		headers: {
-			"authorization": `Bearer ${this.token}`
-		}
-	})
-}*/}
-
-
 
 export { Api };
-
-

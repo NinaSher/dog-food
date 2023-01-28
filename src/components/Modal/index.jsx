@@ -5,7 +5,7 @@ import Login from "./Login";
 
 export default ({ isActive, setState, api, setToken }) => {
 	const [auth, setAuth] = useState(true);
-	console.log(api);
+	//console.log(api);
 	let style = {
 		display: isActive && "flex"
 	}

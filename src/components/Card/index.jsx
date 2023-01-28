@@ -4,8 +4,7 @@ import { useNavigate } from "react-router";
 import { addItem } from "../../store/cartSlice/reducer";
 import "./style.css";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import {increaseCountCart, decreaseCountCart} from "../../store/cartSlice/reducer"
+
 
 export const Card = ({ 
 	id, 

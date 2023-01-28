@@ -105,7 +105,7 @@ const App = () => {
 						<Route path="/catalog" element={<Catalog data={visibleGoods} />} />
 						<Route path="/profile" element={<Profile setUser={setUser} user={user} />} />
 						<Route path="/catalog/:id" element={<Product/>} />
-						<Route path="/order" element={<Cart/>}/>
+						<Route path="/order" element={<Cart api={api} />}/>
 					</Routes>
 				</main>
 				<Footer />

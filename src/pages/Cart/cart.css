@@ -5,7 +5,7 @@
 
 .section-cart__header{
 	padding: 5px 30px;
-	margin-bottom: 0;
+	margin-bottom: 20px;
 	text-align: center;
 }
 
@@ -65,7 +65,8 @@
 	cursor: pointer;
 }
 
-.counter {
+.cart__quantity {
+	grid-column-start: 4;
 	display: flex;
 	gap: 10px;
 	margin-left: 50px;

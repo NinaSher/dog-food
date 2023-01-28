@@ -1,19 +1,29 @@
 .order-item {
-	display: flex;
+	display: grid;
+	grid-template-columns: 5fr 3fr 4fr;
+	grid-template-rows: max-content;
 	margin-bottom: 30px;
 }
 .img{
 size: 20px;
 }
 .order-item__title {
+	display: grid;
+	grid-column-start: 1;
 	font-size: 24px;
 	font-weight: bold;
 }
 
 .order-item__price {
-	display: flex;
-	justify-content: center;
 	font-size: 24px;
 	font-weight: bold;
 	margin-left: auto;
+}
+
+.order-item__delete{
+	grid-column-start: 3;
+}
+.order-item__quantity{
+	grid-column-start: 3;
+	margin: 5px;
 }

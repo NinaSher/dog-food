@@ -12,20 +12,25 @@ import { useDispatch } from 'react-redux'
 import { toggleCheckAll } from '../../store/cartSlice/reducer'
 import { setCheckboxEl } from '../../store/cartSlice/reducer'
 
+
 export const PRODUCT__CARD__KEY = ['PRODUCT__CARD__KEY']
 
 const getOrderItemQueryKey = (cartItemsId) => PRODUCT__CARD__KEY.concat(cartItemsId)
 
-export function Cart() {
+export function Cart({ api }) {
+	const [checkbox, setCheckbox] = useState(true)
+	const [chicket, setChicket] = useState(true)
 
 	const items = useSelector((store) => store.cart.itemsInCart);
+	//console.log()
 
-	const cart = useSelector((store) => store.cart)
-	const { data: products } = useQuery({
-		queryKey: getOrderItemQueryKey(items.map((product) => product.id)),
-		queryFn: () => Api.getProductsById(items.map((product) => product.id)),
+
+	const { data } = useQuery({
+		queryKey: getOrderItemQueryKey(items.map((el) => el.id)),
+		queryFn: () => api.getProductsById(items.map((el) => el.id)),
 	})
-	console.log(products)
+	console.log(data)
+
 	if (items.length < 1) {
 		return (
 			<>
@@ -42,11 +47,9 @@ export function Cart() {
 			return objId.count
 		}
 	}
-	const [checkbox, setCheckbox] = useState(true)
-	const [chicket, setChicket] = useState(true)
 
 	const dispatch = useDispatch()
-	const allCheckboxes = () => {
+	{/*const allCheckboxes = () => {
 		dispatch(toggleCheckAll())
 		setChicket((prev) => !prev)
 		setCheckbox((prev) => !prev)
@@ -54,9 +57,9 @@ export function Cart() {
 		if (revue === true) {
 			setCheckbox(false)
 		}
-	}
+	}*/}
 
-	const checkboxEl = (id) => {
+	{/*const checkboxEl = (id) => {
 		dispatch(setCheckboxEl(id))
 		setChicket((prev) => !prev)
 		const revue = items.some((el) => el.checkbox === false)
@@ -66,7 +69,16 @@ export function Cart() {
 		if (revue === true) {
 			setCheckbox(false)
 		}
-	}
+	}*/}
+
+	{/*const checkedId = (id) => {
+		const checkedElId = items.find((el) => el.id === id)
+		if (checkedElId) {
+		  return checkedElId.checkbox
+		}
+		console.log(checkedElId.checkbox)
+		return checkedElId.checkbox
+	 }*/}
 
 	return (
 		<><div className='cart-button__left'>
@@ -87,16 +99,21 @@ export function Cart() {
 						<section className='cart'>
 							<header className='cart-header'>
 								<div className='cart-header__title'>наименование</div>
-								<div className='cart-header__count'>количество</div>
 								<div className='cart-header__cost'>стоимость</div>
+								
 
 							</header>
-							<section className='product'>
-
-								{items.map(product => <OrderItem product={product} quantity={quantity} checkboxEl={checkboxEl}
-								/>)}
-							</section>
-							<input type='checkbox' checked={checkbox} onChange={() => allCheckboxes()} /><div className="order-item"></div>
+							{data ? data.map((el) => (
+								<>
+									{/*}<input type='checkbox' checked={checkboxEl(el['_id'])} /> */}
+									<OrderItem
+										el={el}
+										//checkboxEl={checkboxEl}
+										quantity={quantity}
+									/>
+								</>
+							)) : null}
+							{/*<input type='checkbox' checked={checkbox} onChange={() => allCheckboxes()} /><div className="order-item"></div>*/}
 							<footer className='cart-footer'>
 								<span>Итого:</span>
 								<div className='cart-footer__price'>
