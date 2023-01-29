@@ -28,7 +28,7 @@ export const OrderItem = ({ el, quantity }) => {
 
 		<>{/*<input type='checkbox' checked={checkboxEl(product.id)} />*/}
 			<div className="order-item">
-				<div className="order-item__title">
+				<div className="order-item__title"  key={el['_id']}>
 					<img src={el.pictures} alt="изображение" style={{ height: "100px" }} />
 					<div className="ordet-item__name">{el.name}</div>
 					<div className="order-item__quantity">{quantity(el.id)}</div>

@@ -1,6 +1,6 @@
 class Local {
-	static getItem(name, flag = false) {
-		let data = localStorage.getItem(name);
+	static productItem(name, flag = false) {
+		let data = localStorage.productItem(name);
 		if (data) {
 			if (flag) {
 				return JSON.parse(data);

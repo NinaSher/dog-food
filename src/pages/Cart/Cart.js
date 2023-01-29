@@ -6,11 +6,12 @@ import { Api } from '../../Api'
 import './cart.css'
 
 import { OrderItem } from '../../components/OrderItem/OrderItem';
-import { calcTotalPrice, enumerate } from "../../components/utils"
+import { calcTotalPrice, enumerate } from "../../components/Utils"
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleCheckAll } from '../../store/cartSlice/reducer'
 import { clearItems } from '../../store/cartSlice/reducer'
+import { Tornado } from 'react-bootstrap-icons'
 
 
 export const PRODUCT__CARD__KEY = ['PRODUCT__CARD__KEY']
@@ -85,7 +86,8 @@ export function Cart({ api }) {
 	}*/
 
 	return (
-		<><div className='cart-button__left'>
+		<>
+		<div className='cart-button__left'>
 			<button className="btn" type="button">Оплатить</button>
 		</div>
 			<div className='cart-catalog'>
@@ -104,19 +106,17 @@ export function Cart({ api }) {
 							<header className='cart-header'>
 								<div className='cart-header__title'>наименование</div>
 								<div className='cart-header__cost'>стоимость</div>
-
-
 							</header>
 							{data ? data.map((el) => (
-								
+								<div className='cart__body'> 
 								<>
-									{/*}<input type='checkbox' checked={checkboxEl(el['_id'])} /> */}
-									<OrderItem key={el['_id']}
+									<OrderItem 
 										el={el}
 										//checkboxEl={checkboxEl}
 										quantity={quantity}
 									/>
-								</>
+									</>
+									</div>
 							)) : null}
 							{/*<input type='checkbox' checked={checkbox} onChange={() => allCheckboxes()} /><div className="order-item"></div>*/}
 							<footer className='cart-footer'>
@@ -131,11 +131,10 @@ export function Cart({ api }) {
 								Очистить Корзину
 							</button>
 						</section>
-
 					</div>
 				</div>
 			</section>
-		</>
+			</>
 	)
 };
 

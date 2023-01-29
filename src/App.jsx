@@ -5,7 +5,7 @@ import './style.css';
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Modal from "./components/Modal";
+import Modal from "./components/Modal/Index";
 import Topnav from "./components/Topnav/Topnav";
 
 
@@ -13,7 +13,7 @@ import Topnav from "./components/Topnav/Topnav";
 import Home from "./pages/Home.jsx";
 import Catalog from "./pages/Catalog.jsx";
 import Profile from "./pages/Profile";
-import Product from "./pages/Product";
+import Product from "./pages/Product/Product";
 import {Cart} from "./pages/Cart/Cart";
 
 
@@ -104,7 +104,7 @@ const App = () => {
 						<Route path="/" element={<Home data={blocks} />} />
 						<Route path="/catalog" element={<Catalog data={visibleGoods} />} />
 						<Route path="/profile" element={<Profile setUser={setUser} user={user} />} />
-						<Route path="/catalog/:id" element={<Product/>} />
+						<Route path="/catalog/:id" element={<Product />} />
 						<Route path="/order" element={<Cart api={api} />}/>
 					</Routes>
 				</main>

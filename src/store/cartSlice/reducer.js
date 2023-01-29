@@ -53,6 +53,12 @@ export const cartSlice = createSlice({
 			}, 0)
 		},
 
+		clearItems(state) {
+			state.items = []
+			state.totalPrice = 0
+		},
+	},
+
 		setCheckboxEl(state, action) {
 			const findItem = state.itemsInCart.find((obj) => obj.id === action.payload)
 			if (findItem) {
@@ -74,17 +80,12 @@ export const cartSlice = createSlice({
 		toggleCheckAll(state) {
 			state.itemsInCart = state.itemsInCart.map((el) => ({ ...el, checkbox: !el.checkbox }))
 		},
-	},
+
 
 	deleteItemFromCart: (state, action) => {//удалить из корзины
 		state.itemsInCart = state.itemsInCart.filter((obj) => obj.id !== action.payload)
 	},
-	clearItems(state) {
-      state.items = []
-      state.totalPrice = 0
-   },
-}
-)
+})
 
 export const {
 	addItem,
