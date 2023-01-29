@@ -3,10 +3,10 @@ import './header.css';
 import { Link } from "react-router-dom";
 import  Search from "../Search/Search";
 import { CartBlock } from "../CartBlock/CartBlock";
+import {PlusCircle} from "react-bootstrap-icons";
 
 
-
-export default ({user, setUser, goods, searchGoods, setModalActive}) => {
+export default ({user, setUser, goods, searchGoods, setModalActive, PATH}) => {
 
 	
 	const logIn = (e) => {
@@ -19,10 +19,11 @@ export default ({user, setUser, goods, searchGoods, setModalActive}) => {
 		setUser('');
 	}
 		return <header>
-			<Link className="logo" to="/">FoodDog</Link>
+			<Link className="logo" to={PATH}>FoodDog</Link>
 			<Search data={goods} searchGoods={searchGoods} />
 			
 			<nav className="menu">
+				{user && <Link to='/new'><PlusCircle/></Link>}
 				{user && <Link to="/profile">{user}</Link>}
 				{!user && <a href="#" onClick={logIn}>Войти</a>}
 				{user && <a href="#" onClick={logOut}>Выйти</a>}

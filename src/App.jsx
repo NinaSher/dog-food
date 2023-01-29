@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Provider } from "react-redux";
 import { Routes, Route,Switch, BrowserRouter } from "react-router-dom";
 import './style.css';
+import store, { persistor } from "./store/store";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -15,11 +16,11 @@ import Catalog from "./pages/Catalog.jsx";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product/Product";
 import {Cart} from "./pages/Cart/Cart";
-
+import { NewProductForm } from "./pages/NewProductForm/NewProductForm";
 
 import { Api } from "./Api";
 
-import store, { persistor } from "./store/store";
+
 
 
 
@@ -35,6 +36,7 @@ const App = () => {
 	const [visibleGoods, setVisibleGoods] = useState(goods);
 	const [fav, setFav] = useState([]);
 	const [products, setProducts] = useState([]);
+	
 
 	useEffect(() => {
 		//console.log("");
@@ -85,7 +87,7 @@ const App = () => {
   }, [goods])
 
 	return (
-		<Provider store={store}>
+		<Provider  store={store}>
 			<div className="container">
 				<Header
 					user={user}
@@ -106,6 +108,7 @@ const App = () => {
 						<Route path="/profile" element={<Profile setUser={setUser} user={user} />} />
 						<Route path="/catalog/:id" element={<Product />} />
 						<Route path="/order" element={<Cart api={api} />}/>
+						<Route path="/new"element={<NewProductForm/>}/>
 					</Routes>
 				</main>
 				<Footer />

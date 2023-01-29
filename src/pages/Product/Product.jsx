@@ -26,15 +26,15 @@ export default ({
 	wight, 
 	stock, 
 	likes,totalPrice,
- }) => {
+}) => {
 	const { id } = useParams()
 	const [product, setProduct] = useState({});
 	const [users, setUsers] = useState([]);
 
 	const items = useSelector((state) => state.cart.itemsInCart);
 
-	let token = localStorage.getItem("sm8");
-	{/*useEffect(() => {
+	{/*let token = localStorage.getItem("sm8");
+	useEffect(() => {
 		if (token) {
 			fetch(`https://api.react-learning.ru/products/${id}`, {
 				headers: {
