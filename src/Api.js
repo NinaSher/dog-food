@@ -34,25 +34,30 @@ class Api {
 		});
 	}
 
-	getProductItem = (id) => fetch(
-		`${this.baseUrl}/products/${id}`,
-		{
+
+	/*getProductItem(id) {
+		const res = fetch(`${this.path}/products/${id}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				authorization: `Bearer ${token}`,
+				authorization: `Bearer ${this.token}`,
 			},
-		},
-	)
-	async getCardItem(search) { // вывод карточек
-		const response = await fetch(`${this.baseUrl}/products/?${new URLSearchParams(search).toString()}`, {
+		});
+		return res.json();
+	}*/
+
+	async getProductItem(id) {
+		const response = await fetch(`${this.path}/products/${id}`, {
+			method: 'GET',
 			headers: {
-				authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+				authorization: `Bearer ${this.token}`,
 				'Content-Type': 'application/json',
 			},
-		})
+		}).catch((error) => error)
 		return response.json()
 	}
+
+
 
 	getProductsById(ids) { // корзина
 		return Promise.all(ids.map((id) => fetch(`${this.path}/products/${id}`, {
@@ -62,7 +67,17 @@ class Api {
 			},
 		}).then((res) => res.json())))
 	}
-	addProduct(body) {//дабавление товара
+
+	addProductRequest = (input) => fetch(`${this.path}/products`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${this.token} `,
+      },
+      body: JSON.stringify(input),
+    })
+
+	/*addProduct(body) {//дабавление товара
 		return fetch(`${this.path}/products`, {
 			method: "POST",
 			headers: {
@@ -71,7 +86,7 @@ class Api {
 			},
 			body: JSON.stringify(body)
 		})
-	}
+	}*/
 	delProduct(id) {
 		return fetch(`${this.path}/products/${id}`, {
 			method: "DELETE",
@@ -89,5 +104,6 @@ class Api {
 		})
 	}
 }
+
 
 export { Api };
