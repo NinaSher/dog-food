@@ -69,13 +69,13 @@ class Api {
 	}
 
 	addProductRequest = (input) => fetch(`${this.path}/products`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${this.token} `,
-      },
-      body: JSON.stringify(input),
-    })
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			authorization: `Bearer ${this.token} `,
+		},
+		body: JSON.stringify(input),
+	})
 
 	/*addProduct(body) {//дабавление товара
 		return fetch(`${this.path}/products`, {
@@ -103,7 +103,44 @@ class Api {
 			}
 		})
 	}
+	addReview(productId, body) {
+		return fetch(`${this.path}/products/review/${productId}`, {
+			method: "POST",
+			headers: {
+				"authorization": `Bearer ${this.token}`,
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(body)
+		})
+	}
+
+	deleteReview(productId, reviewId) {
+		return fetch(`${this.path}/products/review/${productId}/${reviewId}`, {
+			method: "DELETE",
+			headers: {
+				"authorization": `Bearer ${this.token}`
+			}
+		})
+	}
+
+	getReviews() {
+		return fetch(`${this.path}/products/review/`, {
+			headers: {
+				"authorization": `Bearer ${this.token}`
+			}
+		})
+	}
+
+	getProductReview(productId) {
+		return fetch(`${this.path}/products/review/${productId}`, {
+			headers: {
+				"authorization": `Bearer ${this.token}`
+			}
+		})
+	}
+
 }
+
 
 
 export { Api };
