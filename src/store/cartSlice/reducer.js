@@ -82,7 +82,7 @@ export const cartSlice = createSlice({
 		},
 
 
-	deleteItemFromCart: (state, action) => {//удалить из корзины
+	deleteItemFromCart: (state, action) => {
 		state.itemsInCart = state.itemsInCart.filter((obj) => obj.id !== action.payload)
 	},
 })

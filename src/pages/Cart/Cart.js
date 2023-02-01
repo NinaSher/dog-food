@@ -9,7 +9,7 @@ import { OrderItem } from '../../components/OrderItem/OrderItem';
 import { calcTotalPrice, enumerate } from "../../components/Utils"
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { toggleCheckAll } from '../../store/cartSlice/reducer'
+import { toggleCheckAll, setCheckboxEl } from '../../store/cartSlice/reducer'
 import { clearItems } from '../../store/cartSlice/reducer'
 import { Tornado } from 'react-bootstrap-icons'
 
@@ -20,8 +20,8 @@ const getOrderItemQueryKey = (cartItemsId) => PRODUCT__CARD__KEY.concat(cartItem
 
 export function Cart({ api }) {
 	const [checkbox, setCheckbox] = useState(true)
-	const [chicket, setChicket] = useState(true)
-
+	//const [chicket, setChicket] = useState(true)
+	//const cart = useSelector((store) => store.cart)
 	const items = useSelector((store) => store.cart.itemsInCart);
 	//console.log()
 
@@ -53,8 +53,8 @@ export function Cart({ api }) {
 	}
 	const { totalPrice } = useSelector((store) => store.cart)
 
-	//const dispatch = useDispatch() при добавлении чекбокса начинается бесконечный цикл, из-за корзины в хедере и страницы корзины, идет наложение
-	{/*const allCheckboxes = () => {
+	const dispatch = useDispatch() //при добавлении чекбокса начинается бесконечный цикл, из-за корзины в хедере и страницы корзины, идет наложение
+	/*const allCheckboxes = () => {
 		dispatch(toggleCheckAll())
 		setChicket((prev) => !prev)
 		setCheckbox((prev) => !prev)
@@ -62,9 +62,9 @@ export function Cart({ api }) {
 		if (revue === true) {
 			setCheckbox(false)
 		}
-	}*/}
+	}*/
 
-	{/*const checkboxEl = (id) => {
+	/*const checkboxEl = (id) => {
 		dispatch(setCheckboxEl(id))
 		setChicket((prev) => !prev)
 		const revue = items.some((el) => el.checkbox === false)
@@ -74,7 +74,7 @@ export function Cart({ api }) {
 		if (revue === true) {
 			setCheckbox(false)
 		}
-	}*/}
+	}*/
 
 	/*const checkedId = (id) => {
 		const checkedElId = items.find((el) => el.id === id)
@@ -118,7 +118,8 @@ export function Cart({ api }) {
 									</>
 									</div>
 							)) : null}
-							{/*<input type='checkbox' checked={checkbox} onChange={() => allCheckboxes()} /><div className="order-item"></div>*/}
+							
+							<div className="order-item"></div>
 							<footer className='cart-footer'>
 								<span>Итого:</span>
 								<div className='cart-footer__price'>

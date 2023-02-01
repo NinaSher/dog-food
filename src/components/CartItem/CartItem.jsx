@@ -1,9 +1,12 @@
 //карточка товара в корзине
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addItem, minusItem } from "../../store/cartSlice/reducer";
+import { removeItem } from "../../store/cartSlice/reducer";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import "./cartItem.css";
+
+
+
 
 
 export const CartItem = ({
@@ -11,13 +14,11 @@ export const CartItem = ({
 	price,
 	id,
 	pictures }) => {
-	const dispatch = useDispatch();
-
-		
-
-	const handleDeleteClick = () => {
-		dispatch(minusItem(id));
-	};
+	
+		const dispatch = useDispatch();
+		const onClickClearCart = () => {
+			dispatch(removeItem(id))
+		}
 
 	return (
 		<div className="cart-item">
@@ -30,7 +31,7 @@ export const CartItem = ({
 				<AiOutlineCloseCircle
 					size={15}
 					className="cart-item__delete-icon"
-					onClick={handleDeleteClick}
+					onClick={onClickClearCart}
 				/>
 			</div>
 		</div>

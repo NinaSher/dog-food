@@ -3,12 +3,13 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import "./orderItem.css";
-import { addItem, deleteItemFromCart,minusItem } from "../../store/cartSlice/reducer";
+import { addItem, removeItem,minusItem } from "../../store/cartSlice/reducer";
 
 export const OrderItem = ({ el, quantity }) => {
 	const dispatch = useDispatch();
+	
 	const hendleDeleteClick = () => {
-		dispatch(deleteItemFromCart(el['_id']))
+		dispatch(removeItem(el['_id']))
 	}
 	console.log(el['_id'])
 
@@ -26,7 +27,7 @@ export const OrderItem = ({ el, quantity }) => {
 
 	return (
 
-		<>{/*<input type='checkbox' checked={checkboxEl(product.id)} />*/}
+		<>
 			<div className="order-item">
 				<div className="order-item__title"  key={el['_id']}>
 					<img src={el.pictures} alt="изображение" style={{ height: "100px" }} />
