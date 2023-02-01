@@ -9,7 +9,7 @@ import { OrderItem } from '../../components/OrderItem/OrderItem';
 import { calcTotalPrice, enumerate } from "../../components/Utils"
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { toggleCheckAll, setCheckboxEl } from '../../store/cartSlice/reducer'
+import { setCheckboxEl } from '../../store/cartSlice/reducer'
 import { clearItems } from '../../store/cartSlice/reducer'
 import { Tornado } from 'react-bootstrap-icons'
 
@@ -20,8 +20,8 @@ const getOrderItemQueryKey = (cartItemsId) => PRODUCT__CARD__KEY.concat(cartItem
 
 export function Cart({ api }) {
 	const [checkbox, setCheckbox] = useState(true)
-	//const [chicket, setChicket] = useState(true)
-	//const cart = useSelector((store) => store.cart)
+	const [checked, setChecked] = useState(true)
+	const cart = useSelector((store) => store.cart)
 	const items = useSelector((store) => store.cart.itemsInCart);
 	//console.log()
 
@@ -54,19 +54,19 @@ export function Cart({ api }) {
 	const { totalPrice } = useSelector((store) => store.cart)
 
 	const dispatch = useDispatch() //при добавлении чекбокса начинается бесконечный цикл, из-за корзины в хедере и страницы корзины, идет наложение
-	/*const allCheckboxes = () => {
-		dispatch(toggleCheckAll())
-		setChicket((prev) => !prev)
+	const allCheckboxes = () => {
+		dispatch(allCheckboxes())
+		setChecked((prev) => !prev)
 		setCheckbox((prev) => !prev)
 		const revue = items.some((el) => el.checkbox === false)
 		if (revue === true) {
 			setCheckbox(false)
 		}
-	}*/
+	}
 
-	/*const checkboxEl = (id) => {
+	const checkedEl = (id) => {
 		dispatch(setCheckboxEl(id))
-		setChicket((prev) => !prev)
+		setChecked((prev) => !prev)
 		const revue = items.some((el) => el.checkbox === false)
 		if (revue === false) {
 			setCheckbox(false)
@@ -74,16 +74,16 @@ export function Cart({ api }) {
 		if (revue === true) {
 			setCheckbox(false)
 		}
-	}*/
+	}
 
-	/*const checkedId = (id) => {
+	const checkedId = (id) => {
 		const checkedElId = items.find((el) => el.id === id)
 		if (checkedElId) {
 		return checkedElId.checkbox
 		}
 		console.log(checkedElId.checkbox)
 		return checkedElId.checkbox
-	}*/
+	}
 
 	return (
 		<>
@@ -108,11 +108,16 @@ export function Cart({ api }) {
 								<div className='cart-header__cost'>стоимость</div>
 							</header>
 							{data ? data.map((el) => (
-								<div className='cart__body'> 
+								<div className='cart__body' key={el['_id']}> 
+								<input
+								type='checkbox'
+								checked={checkedId(el['_id'])}
+								onChange={() => checkedEl(el['_id'])}
+								className="checkbox"/>
 								<>
 									<OrderItem 
 										el={el}
-										//checkboxEl={checkboxEl}
+										checkedEl={checkedEl}
 										quantity={quantity}
 									/>
 									</>
@@ -124,10 +129,10 @@ export function Cart({ api }) {
 								<span>Итого:</span>
 								<div className='cart-footer__price'>
 									{' '}
-									{totalPrice}
-									{/*<span>{ items.length} {enumerate( items.length, ['товар', 'товара', 'товаров'])} на сумму {calcTotalPrice( items)} руб.</span>*/}
+									<span>{ items.length} {enumerate( items.length, ['товар', 'товара', 'товаров'])} на сумму { totalPrice} руб.</span>
 								</div>
 							</footer>
+							<br/>
 							<button className="btn" type="button" onClick={() => onClickClearCart()}>
 								Очистить Корзину
 							</button>

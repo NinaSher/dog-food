@@ -26,19 +26,18 @@ export default ({ setUser, user }) => {
 						<p>Почта: {user.email}</p>
 					</div>
 				</div>
-			</div>	
-					<br />
-					<Link to="edit">
-						<button className="btn" type="button">Изменить профиль</button>
-					</Link>
-					<br />
-					<Link className="btn" to="/catalog">Вернуться в каталог</Link>
-					<br />
-					<a href="#" onClick={logOut} style={{ color: "black" }}>Выйти</a>
-					<br />
-					{user && <Link to='/new'>Добавить новый товар</Link>}
-				
-			
+			</div>
+			<br />
+			<Link to="edit">
+				<button className="btn" type="button">Изменить профиль</button>
+			</Link>
+			<br />
+			<Link className="btn" to="/catalog">Вернуться в каталог</Link>
+			<br />
+			{user && <Link to='/new'>Добавить новый товар</Link>}
+			<br />
+			<a href="#" onClick={logOut} style={{ color: "black" }}>Выйти</a>
+
 		</>
 	)
 }

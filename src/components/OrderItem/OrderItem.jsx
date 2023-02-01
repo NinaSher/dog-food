@@ -26,7 +26,7 @@ export const OrderItem = ({ el, quantity }) => {
 	}
 
 	return (
-
+		
 		<>
 			<div className="order-item">
 				<div className="order-item__title"  key={el['_id']}>
