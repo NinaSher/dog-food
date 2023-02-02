@@ -4,7 +4,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import cartSlice from './cartSlice/reducer';
 import { userSlice } from './userSlise/reduser';
 import productSlise from './productSlise/reducer';
-//import {favoriteReducer}  from './favorites/favorites';
+import  favoriteSlice  from './favorites/reducer';
 
 import {
 	persistStore,
@@ -22,6 +22,7 @@ const rootReducer = combineReducers({
 	product: productSlise,
 	cart: cartSlice,
 	user: userSlice,
+	favorites: favoriteSlice,
 })
 
 const persistConfig = {
@@ -42,11 +43,3 @@ const store = configureStore({
 export const persistor = persistStore(store);
 export default store;
 
-//export const store = configureStore({
-	//reducer: {
-		//product: productSlise,
-		//cart: cartSlice,
-		//user: userSlice,
-		////favorite: favoriteSlice.reducer,
-	//}
-//})

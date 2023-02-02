@@ -16,28 +16,23 @@ export default ({ setUser, user }) => {
 
 	return (
 		<>
+			<Link className="btn" to="/catalog">Вернуться в каталог</Link>
+			<br/>
 			<h1>Личный кабинет</h1>
 			<p>Привет, {user}</p>
-			<div className="profile">
-				<img src={user.avatar} alt="Фото пользователя" />
-				<div>
+			< div className="profile">
 					<div className="profile__info">
+					<img src={user.avatar} alt="Фото пользователя" />
 						<p>Обо мне: {user.about}</p>
 						<p>Почта: {user.email}</p>
+						<Link to="edit">
+							<button className="btn" type="button">Изменить профиль</button>
+						</Link>
 					</div>
 				</div>
-			</div>
-			<br />
-			<Link to="edit">
-				<button className="btn" type="button">Изменить профиль</button>
-			</Link>
-			<br />
-			<Link className="btn" to="/catalog">Вернуться в каталог</Link>
-			<br />
-			{user && <Link to='/new'>Добавить новый товар</Link>}
-			<br />
-			<a href="#" onClick={logOut} style={{ color: "black" }}>Выйти</a>
-
+				<div className='profile__addproduct'>
+					{user && <Link to='/new'>Добавить новый товар</Link>}
+				</div>
 		</>
 	)
 }

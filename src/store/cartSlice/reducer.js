@@ -82,9 +82,9 @@ export const cartSlice = createSlice({
 		},
 
 
-	deleteItemFromCart: (state, action) => {
-		state.itemsInCart = state.itemsInCart.filter((obj) => obj.id !== action.payload)
-	},
+	//deleteItemFromCart: (state, action) => {
+		//state.itemsInCart = state.itemsInCart.filter((obj) => obj.id !== action.payload)
+	//},
 })
 
 export const {

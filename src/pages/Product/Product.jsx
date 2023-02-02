@@ -7,6 +7,7 @@ import Review from "../../components/Review/Review";
 import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../store/cartSlice/reducer";
+import { addItemFavorites } from "../../store/favorites/reducer";
 import "./product.css";
 
 
@@ -15,15 +16,15 @@ export const PRODUCTS_QUERY_KEY = ['PRODUCTS_QUERY_KEY'];
 
 const getProducts = (id) => [...PRODUCTS_QUERY_KEY, id]
 
-export function Product({api}) {
+export function Product({ api }) {
 	const { id } = useParams()
 	const dispatch = useDispatch()
 
 
-	
-	const { data, status, error } = useQuery({
-		queryKey:  getProducts(id),
-		queryFn: ({signal}) => api.getProductItem(id, signal),
+
+	const { data, status, error} = useQuery({
+		queryKey: getProducts(id),
+		queryFn: ({ signal }) => api.getProductItem(id, signal),
 	})
 
 	if (status === 'loading') {
@@ -51,40 +52,43 @@ export function Product({api}) {
 		dispatch(addItem(item))
 	}
 
-console.log(data)
+	console.log(data)
 
-
+	const changeFavoriteHandler = (event) => {
+		event.preventDefault()
+		dispatch(addItemFavorites(id))
+	}
 
 	return <>
-		<h1>{data.name || "Страница товара"}</h1>
+		<Link to="/catalog">Вернуться в каталог</Link>
 		<div className="product__container">
-			<div className="product__item">
-				<img src={data.pictures} alt="изображение" />
-				<h4>Наименование товара</h4>
-				<p>{data.name}</p>
-				<h4>Описание товара</h4>
+		<h1>{data.name || "Страница товара"}</h1>
+		<div className="product__info">
+				<img className="img" src={data.pictures} alt="изображение" />
+				<div className="product__item">
+				<h2>{data.name}</h2>
 				<p>{data.description}</p>
-				<h4>Стоимость</h4>
 				<p>
 					{data.price}
 					{' '}
 				</p>
-				<h4>Рейтинг</h4>
 				<p>{data.description}</p>
 			</div>
 			<div className="product__button">
-				<button className="btn" type="button" onClick={addItemCartHandler}>в корзину</button>
-				<button className="btn" type="button">в избраное</button>
-				<NavLink to="review">
-					Отзывы
-					{' '}
-					{`(${data.reviews.length})`}
-					{/*{data.reviews && data.reviews.length > 0 && data.reviews.map((el, i) => <Review {...el} key={i} />)}*/}
-				</NavLink>
-				<Link to="/catalog">Каталог</Link>
-
+				<button className="btn" type="button" onClick={() => addItemCartHandler(data.price, data.discount, data.pictures, data.stock, data.name)}>В корзину</button>
+				<button className="btn" type="button" onClick={changeFavoriteHandler}>В избраное</button>
 				<button type="submit" className="btn btn-primary">Удалить товар</button>
 			</div>
 		</div>
+		<hr/>
+		</div>
+		<br/>
+
+		<NavLink to="review">
+					<h5>Отзывы</h5>
+					{' '}
+					{/*`(${data.reviews.length})`*/}
+					{data.reviews && data.reviews.length > 0 && data.reviews.map((el, i) => <Review {...el} key={i} />)}
+				</NavLink>
 	</>
 }
