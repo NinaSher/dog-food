@@ -26,6 +26,13 @@ class Api {
 			body: JSON.stringify(body)
 		});
 	}
+	getUserById(userId) {
+		return fetch(`${this.path}/v2/sm8/users/${userId}`, {
+			headers: {
+				"authorization": `Bearer ${this.token}`
+			}
+		})
+	}
 	getProducts() {//получение продукта
 		return fetch(`${this.path}/products`, {
 			headers: {
@@ -33,19 +40,6 @@ class Api {
 			}
 		});
 	}
-
-
-	/*getProductItem(id) {
-		const res = fetch(`${this.path}/products/${id}`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				authorization: `Bearer ${this.token}`,
-			},
-		});
-		return res.json();
-	}*/
-
 	async getProductItem(id) {
 		const response = await fetch(`${this.path}/products/${id}`, {
 			method: 'GET',
@@ -56,9 +50,6 @@ class Api {
 		}).catch((error) => error)
 		return response.json()
 	}
-
-
-
 	getProductsById(ids) { // корзина
 		return Promise.all(ids.map((id) => fetch(`${this.path}/products/${id}`, {
 			headers: {
@@ -68,25 +59,21 @@ class Api {
 		}).then((res) => res.json())))
 	}
 
-	addProductRequest = (input) => fetch(`${this.path}/products`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			authorization: `Bearer ${this.token} `,
-		},
-		body: JSON.stringify(input),
-	})
-
-	/*addProduct(body) {//дабавление товара
-		return fetch(`${this.path}/products`, {
-			method: "POST",
+	async addProductRequest(body) {
+		console.log(body)
+		const response = await fetch(`${this.path}/products`, {
+			method: 'POST',
 			headers: {
-				"Content-Type": "application/json",
-				"authorization": `Bearer ${this.token}`
+				'Content-Type': 'application/json',
+				authorization: `Bearer ${this.token} `,
 			},
-			body: JSON.stringify(body)
+			body: JSON.stringify(body),
 		})
-	}*/
+		console.log(response.json())
+		return response.json()
+	}
+
+
 	delProduct(id) {
 		return fetch(`${this.path}/products/${id}`, {
 			method: "DELETE",
@@ -96,12 +83,23 @@ class Api {
 		})
 	}
 	setLike(id, isLike) {
-		return fetch(`${this.path}/products/likes/${id}`, {
-			method: isLike ? "DELETE" : "PUT",
-			headers: {
-				"authorization": `Bearer ${this.token}`
+		try {
+			const res = fetch(`${this.path}/products/likes/${id}`, {
+				method: isLike ? "DELETE" : "PUT",
+				headers: {
+					"authorization": `Bearer ${this.token}`,
+				},
+			})
+			if (res.status !== 200) {
+				const answer = res.json()
+				console.log(answer.err.statusCode, answer.message)
+				return answer
 			}
-		})
+			return res.json()
+		} catch (Error) {
+			throw new Error(Error)
+		}
+
 	}
 	addReview(productId, body) {
 		return fetch(`${this.path}/products/review/${productId}`, {

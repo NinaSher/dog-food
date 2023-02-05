@@ -8,21 +8,23 @@ const favoriteSlice = createSlice({
 	name: 'favorite',
 	initialState,
 	reducers: {
-		addItemFavorites: (state, action) => {
-			if (state.some((el) => el === action.payload)) {
-				return state.filter((el) => el !== action.payload)
-			}
-			return [...state, action.payload]
+		addItemFavorites: {
+			reducer(state, action) {
+				if (state.some((el) => el === action.payload)) {
+					return state.filter((el) => el !== action.payload)
+				}
+				return [...state, action.payload]
+			},
+		},
+		clearFavorites() {
+			return []
 		},
 	},
-	clearFavorites() {
-		return []
-	},
-},
-)
+})
+
 
 export const {
 	addItemFavorites,
-	clearFavoriteList,
+	removeItemFavorite,
 } = favoriteSlice.actions
 export default favoriteSlice.reducer

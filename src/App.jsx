@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Provider } from "react-redux";
 import { Routes, Route,Switch, BrowserRouter } from "react-router-dom";
 import './style.css';
-import store, { persistor } from "./store/store";
+import store from "./store/store";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -16,7 +16,8 @@ import Catalog from "./pages/Catalog.jsx";
 import Profile from "./pages/Profile/Profile";
 import {Product} from "./pages/Product/Product";
 import {Cart} from "./pages/Cart/Cart";
-import { NewProductForm } from "./pages/NewProductForm/NewProductForm";
+
+import NewProductForm from "./pages/NewProductForm/NewProductForm";
 
 import { Api } from "./Api";
 
@@ -96,6 +97,7 @@ const App = () => {
 					searchGoods={setVisibleGoods}
 					setModalActive={setModalActive}
 					products={products}
+					
 				/>
 				<main>
 
@@ -108,7 +110,8 @@ const App = () => {
 						<Route path="/profile" element={<Profile setUser={setUser} user={user} />} />
 						<Route path="/catalog/:id" element={<Product api={api}/>} />
 						<Route path="/order" element={<Cart api={api} />}/>
-						<Route path="/new"element={<NewProductForm/>}/>
+						<Route path="/new"element={<NewProductForm />}/>
+					
 					</Routes>
 				</main>
 				<Footer />

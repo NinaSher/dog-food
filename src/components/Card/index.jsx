@@ -4,8 +4,7 @@ import { useNavigate } from "react-router";
 import { addItem } from "../../store/cartSlice/reducer";
 import "./style.css";
 import { Link } from "react-router-dom";
-import { FaRegHeart } from 'react-icons/fa'
-import { addItemFavorites } from '../../store/favorites/reducer'
+
 
 export const Card = ({
 	id,
@@ -40,19 +39,17 @@ export const Card = ({
 
 	const discountFunc = (price, discont) => Math.round((price - price * discont * 0.01) / 100) * 100
 
-	const changeFavoriteHandler = (event) => {
-		event.preventDefault()
-		dispatch(addItemFavorites(id))
-	}
+
 
 
 	return <>
 		<div className="card">
-			<span className="card__heart">
-				<FaRegHeart
-					onClick={changeFavoriteHandler}
-					
-					/>
+			<span className="card__heart" >
+				{
+					like
+						? <i className="fa-solid fa-heart"></i>
+						: <i className="fa-regular fa-heart"></i>
+				}
 			</span>
 			<img src={pictures} alt="изображение" style={{ height: "100px" }} />
 			<h3>{name}</h3>
@@ -84,6 +81,5 @@ export const Card = ({
 	</>
 };
 export default Card;
-
 
 

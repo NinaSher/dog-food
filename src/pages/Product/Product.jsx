@@ -87,8 +87,8 @@ export function Product({ api }) {
 		<NavLink to="review">
 					<h5>Отзывы</h5>
 					{' '}
-					{/*`(${data.reviews.length})`*/}
-					{data.reviews && data.reviews.length > 0 && data.reviews.map((el, i) => <Review {...el} key={i} />)}
+					{`(${data.reviews.length})`}
+					{/*data.reviews && data.reviews.length > 0 && data.reviews.map((el, i) => <Review {...el} key={i} />)*/}
 				</NavLink>
 	</>
 }

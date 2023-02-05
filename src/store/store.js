@@ -5,6 +5,7 @@ import cartSlice from './cartSlice/reducer';
 import { userSlice } from './userSlise/reduser';
 import productSlise from './productSlise/reducer';
 import  favoriteSlice  from './favorites/reducer';
+import {tokenReducer} from './tokenSlice/reducer'
 
 import {
 	persistStore,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
 	cart: cartSlice,
 	user: userSlice,
 	favorites: favoriteSlice,
+	token: tokenReducer,
 })
 
 const persistConfig = {

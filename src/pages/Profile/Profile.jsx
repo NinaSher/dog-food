@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { NewProductForm } from "../NewProductForm/NewProductForm";
 import "./profile.css"
 
 export default ({ setUser, user }) => {

@@ -12,12 +12,14 @@
 	align-items: center;
 }
 .card__heart {
-	position: absolute;
+	position:absolute;
+	justify-content: right;
 	top: .5em;
 	right: 1em;
 	color: black;
 	font-size: 1.4em;
 }
+
 .card__img {
 	height: 120px;
 	background: no-repeat center / contain;
@@ -54,12 +56,6 @@ h3 {
 	padding: 0;
 }
 
-
-.card__sticky {
-	position: absolute;
-	padding: 10px 15px;
-	font-size: 1.5em;
-}
 .card__discount {
 	padding: 2px 8px;
 	font-weight: 800;
