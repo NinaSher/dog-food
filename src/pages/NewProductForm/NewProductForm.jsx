@@ -3,7 +3,7 @@ import { ErrorMessage, Field, Form, Formik, } from "formik";
 import { useNavigate } from "react-router";
 import * as Yup from "yup";
 import { queryClient } from '../../index.js'
-
+import  './style.css';
 
 export const NEWPRODUCT_KEY=['NEWPRODUCT_KEY']
 
@@ -30,6 +30,7 @@ export function NewProductForm({api}) {
 
 return (
 	<>
+	<div className="container__form">
 		<h2>Создать свой продукт</h2>
 		<Formik
 			initialValues={{
@@ -84,9 +85,10 @@ return (
 				<ErrorMessage  component='span' name="wight" className="error" />
 				<Field name="description" placeholder="Описание товара" type="text" />
 				<ErrorMessage component="span" name="description" className="error" />
-				<button type="submit" className="btn btn-primary">Добавить товар</button>
+				<button type="submit" className="btn">Добавить товар</button>
 			</Form>
 		</Formik>
+		</div>
 	</>
 )
 	}

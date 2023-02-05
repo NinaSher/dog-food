@@ -59,7 +59,7 @@ class Api {
 		}).then((res) => res.json())))
 	}
 
-	async addProductRequest(body) {
+	/*async addProductRequest(body) {
 		console.log(body)
 		const response = await fetch(`${this.path}/products`, {
 			method: 'POST',
@@ -71,8 +71,20 @@ class Api {
 		})
 		console.log(response.json())
 		return response.json()
+	}*/
+	addProductRequest(body) {
+		console.log(body)
+		const response =  fetch(`${this.path}/products`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				authorization: `Bearer ${this.token} `,
+			},
+			body: JSON.stringify(body),
+		})
+		console.log(response.json())
+		return response.json()
 	}
-
 
 	delProduct(id) {
 		return fetch(`${this.path}/products/${id}`, {

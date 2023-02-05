@@ -110,7 +110,7 @@ const App = () => {
 						<Route path="/profile" element={<Profile setUser={setUser} user={user} />} />
 						<Route path="/catalog/:id" element={<Product api={api}/>} />
 						<Route path="/order" element={<Cart api={api} />}/>
-						<Route path="/new"element={<NewProductForm />}/>
+						<Route path="/new"element={<NewProductForm api={api}/>}/>
 					
 					</Routes>
 				</main>

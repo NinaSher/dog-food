@@ -15,7 +15,7 @@ export default ({ setUser, user }) => {
 
 	return (
 		<>
-			<Link className="btn" to="/catalog">Вернуться в каталог</Link>
+			<Link className="btn btn__profile" to="/catalog">Вернуться в каталог</Link>
 			<br/>
 			<h1>Личный кабинет</h1>
 			<p>Привет, {user}</p>
@@ -25,7 +25,7 @@ export default ({ setUser, user }) => {
 						<p>Обо мне: {user.about}</p>
 						<p>Почта: {user.email}</p>
 						<Link to="edit">
-							<button className="btn" type="button">Изменить профиль</button>
+							<button className="btn btn__profile" type="button">Изменить профиль</button>
 						</Link>
 					</div>
 				</div>

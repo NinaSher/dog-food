@@ -1,0 +1,21 @@
+.container__form{
+	display: block;
+	justify-content: center;
+	width: 800px;
+	border:0;
+
+}
+.btn {
+	width: 150px;
+	height: 50px;
+	padding-bottom: 20px;
+
+}
+.addproduct{
+	width: 600px;
+	padding:10px;
+  
+}
+h2{
+	padding: 20px;
+}

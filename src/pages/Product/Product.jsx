@@ -40,7 +40,7 @@ export function Product({ api }) {
 		)
 	}
 
-	const addItemCartHandler = (price, discount, pictures, stock, name) => {
+	const addItemCartHandler = (price, discount, pictures, stock, name,) => {
 		const item = {
 			id,
 			price,
@@ -48,6 +48,7 @@ export function Product({ api }) {
 			pictures,
 			name,
 			stock,
+		
 		}
 		dispatch(addItem(item))
 	}
@@ -67,20 +68,22 @@ export function Product({ api }) {
 				<img className="img" src={data.pictures} alt="изображение" />
 				<div className="product__item">
 				<h2>{data.name}</h2>
+		
 				<p>{data.description}</p>
 				<p>
 					{data.price}
-					{' '}
+					{' '}₽
 				</p>
-				<p>{data.description}</p>
+				<p>{data.discount}₽</p>
 			</div>
-			<div className="product__button">
-				<button className="btn" type="button" onClick={() => addItemCartHandler(data.price, data.discount, data.pictures, data.stock, data.name)}>В корзину</button>
-				<button className="btn" type="button" onClick={changeFavoriteHandler}>В избраное</button>
-				<button type="submit" className="btn btn-primary">Удалить товар</button>
-			</div>
+
+			
 		</div>
 		<hr/>
+		<div className="product__button">
+				<button className="btn" type="button" onClick={() => addItemCartHandler(data.price, data.discount, data.pictures, data.stock, data.name)}>В корзину</button>
+				<button className="btn" type="button" onClick={changeFavoriteHandler}>В избраное</button>
+			</div>
 		</div>
 		<br/>
 

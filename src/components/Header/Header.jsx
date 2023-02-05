@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import  Search from "../Search/Search";
 import { CartBlock } from "../CartBlock/CartBlock";
 import {PlusCircle} from "react-bootstrap-icons";
-
+import {Heart}  from "react-bootstrap-icons";
 
 export default ({user, setUser, goods, searchGoods, setModalActive, PATH}) => {
 
@@ -23,6 +23,7 @@ export default ({user, setUser, goods, searchGoods, setModalActive, PATH}) => {
 			<Search data={goods} searchGoods={searchGoods} />
 			
 			<nav className="menu">
+				{user && <Link to='/favorites'><Heart/></Link>}
 				{user && <Link to='/new'><PlusCircle/></Link>}
 				{user && <Link to="/profile">{user}</Link>}
 				{!user && <a href="#" onClick={logIn}>Войти</a>}
