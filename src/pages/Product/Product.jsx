@@ -7,7 +7,7 @@ import Review from "../../components/Review/Review";
 import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../store/cartSlice/reducer";
-import { addItemFavorites } from "../../store/favorites/reducer";
+import {  addFavorite} from "../../store/favorites/reducer";
 import "./product.css";
 
 
@@ -57,7 +57,7 @@ export function Product({ api }) {
 
 	const changeFavoriteHandler = (event) => {
 		event.preventDefault()
-		dispatch(addItemFavorites(id))
+		dispatch(addFavorite(id))
 	}
 
 	return <>

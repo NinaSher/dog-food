@@ -58,23 +58,11 @@ class Api {
 			},
 		}).then((res) => res.json())))
 	}
+	
 
-	/*async addProductRequest(body) {
-		console.log(body)
-		const response = await fetch(`${this.path}/products`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				authorization: `Bearer ${this.token} `,
-			},
-			body: JSON.stringify(body),
-		})
-		console.log(response.json())
-		return response.json()
-	}*/
 	addProductRequest(body) {
 		console.log(body)
-		const response =  fetch(`${this.path}/products`, {
+		const response = fetch(`${this.path}/products`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -94,23 +82,13 @@ class Api {
 			}
 		})
 	}
-	setLike(id, isLike) {
-		try {
-			const res = fetch(`${this.path}/products/likes/${id}`, {
-				method: isLike ? "DELETE" : "PUT",
-				headers: {
-					"authorization": `Bearer ${this.token}`,
-				},
-			})
-			if (res.status !== 200) {
-				const answer = res.json()
-				console.log(answer.err.statusCode, answer.message)
-				return answer
+	setLike(productId, isLike) {
+		return fetch(`${this.path}/products/likes/${productId}`, {
+			method: isLike ? "DELETE" : "PUT",
+			headers: {
+				"authorization": `Bearer ${this.token}`
 			}
-			return res.json()
-		} catch (Error) {
-			throw new Error(Error)
-		}
+		})
 
 	}
 	addReview(productId, body) {

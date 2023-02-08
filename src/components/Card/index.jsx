@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
 import { addItem } from "../../store/cartSlice/reducer";
 import "./style.css";
 import { Link } from "react-router-dom";
+import { addFavorite } from "../../store/favorites/reducer";
 
 
-export const Card = ({
+
+export const Card = ({ api, 
 	id,
 	pictures,
 	name,
 	discount,
 	price,
-	tags,
-	wight,
 	stock,
-	like, totalPrice,
+	likes, totalPrice,
 }) => {
 
-	const navigate = useNavigate()
 	const dispatch = useDispatch()
+
+
 
 	const onClickAdd = (id, name) => {
 		const item = {
@@ -29,22 +29,30 @@ export const Card = ({
 			pictures,
 			name,
 			stock,
-
 		}
-
 		dispatch(addItem(item));
 		//navigate('/product/${el._id}');
-
 	}
 
 	const discountFunc = (price, discont) => Math.round((price - price * discont * 0.01) / 100) * 100
 
+	const [like, setLike] = useState(likes && likes.includes(user._id));
+
+	const update = ( id) => {
+		console.log(id)
+		const item = {
+			id,
+		}
+		//event.preventDefault();
+		setLike(!like);
+		dispatch(addFavorite(item))
+	}
 
 
 
 	return <>
 		<div className="card">
-			<span className="card__heart" >
+			<span className="card__heart" onClick={()=> update(id)}>
 				{
 					like
 						? <i className="fa-solid fa-heart"></i>
@@ -71,15 +79,12 @@ export const Card = ({
 				₽
 			</h4>
 
-
-
-
 			<button className="btn" type="secondary" onClick={() => onClickAdd(id, name, totalPrice, pictures)}>В корзину </button>
 
 			<Link to={`/catalog/${id}`} key={id}>Подробнее о товаре</Link>
 		</div>
 	</>
-};
-export default Card;
+}
 
+export default Card;
 

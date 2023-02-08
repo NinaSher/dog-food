@@ -4,9 +4,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import cartSlice from './cartSlice/reducer';
 import { userSlice } from './userSlise/reduser';
 import productSlise from './productSlise/reducer';
-import  favoriteSlice  from './favorites/reducer';
 import {tokenReducer} from './tokenSlice/reducer'
-
 import {
 	persistStore,
 	persistReducer,
@@ -18,6 +16,8 @@ import {
 	REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { favoriteSlice } from './favorites/reducer';
+//import { favoriteSlice } from './favorites/reducer';
 
 const rootReducer = combineReducers({
 	product: productSlise,

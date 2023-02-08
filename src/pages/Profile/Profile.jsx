@@ -25,7 +25,7 @@ export default ({ setUser, user }) => {
 						<p>Обо мне: {user.about}</p>
 						<p>Почта: {user.email}</p>
 						<Link to="edit">
-							<button className="btn btn__profile" type="button">Изменить профиль</button>
+							<button className="btn btn__profile" type="button">Редактировать</button>
 						</Link>
 					</div>
 				</div>

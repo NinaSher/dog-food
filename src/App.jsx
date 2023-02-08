@@ -20,10 +20,7 @@ import {Cart} from "./pages/Cart/Cart";
 import NewProductForm from "./pages/NewProductForm/NewProductForm";
 
 import { Api } from "./Api";
-
-
-
-
+import FavoriteList from "./pages/Favorites/Favorites";
 
 
 const blocks = [];
@@ -35,7 +32,7 @@ const App = () => {
 	const [api, setApi] = useState(new Api(token));
 	const [goods, setGoods] = useState([]);
 	const [visibleGoods, setVisibleGoods] = useState(goods);
-	const [fav, setFav] = useState([]);
+	const [favorites, setFavorites] = useState([]);
 	const [products, setProducts] = useState([]);
 	
 
@@ -82,9 +79,9 @@ const App = () => {
 	}, [goods])
 
 	useEffect(() => {
-		const f = goods.filter(el => el.likes.includes(user._id))
-		setFav(f);
-		setProducts(goods);
+		setFavorites (goods.filter(el => {
+			return el.likes && el.likes.includes(user._id);
+			}))
   }, [goods])
 
 	return (
@@ -97,7 +94,8 @@ const App = () => {
 					searchGoods={setVisibleGoods}
 					setModalActive={setModalActive}
 					products={products}
-					
+					favorites={favorites}
+					setFavorites={setFavorites}
 				/>
 				<main>
 
@@ -111,7 +109,7 @@ const App = () => {
 						<Route path="/catalog/:id" element={<Product api={api}/>} />
 						<Route path="/order" element={<Cart api={api} />}/>
 						<Route path="/new"element={<NewProductForm api={api}/>}/>
-					
+						<Route path="/favorites" element={<FavoriteList api={api}/>}/>
 					</Routes>
 				</main>
 				<Footer />

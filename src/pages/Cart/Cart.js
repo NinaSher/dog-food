@@ -6,12 +6,12 @@ import { Api } from '../../Api'
 import './cart.css'
 
 import { OrderItem } from '../../components/OrderItem/OrderItem';
-import { calcTotalPrice, enumerate } from "../../components/Utils"
+import {  enumerate } from "../../components/Utils"
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setCheckboxEl } from '../../store/cartSlice/reducer'
 import { clearItems } from '../../store/cartSlice/reducer'
-import { Tornado } from 'react-bootstrap-icons'
+
 
 
 export const PRODUCT__CARD__KEY = ['PRODUCT__CARD__KEY']
