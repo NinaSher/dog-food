@@ -32,6 +32,7 @@ return (
 	<>
 	<div className="container__form">
 		<h2>Создать свой продукт</h2>
+		<hr/>
 		<Formik
 			initialValues={{
 				available: true,

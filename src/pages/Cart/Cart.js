@@ -134,7 +134,7 @@ export function Cart({ api }) {
 							</footer>
 							<br/>
 							<button className="btn" type="button" onClick={() => onClickClearCart()}>
-								Очистить Корзину
+								Очистить 
 							</button>
 						</section>
 					</div>

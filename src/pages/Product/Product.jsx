@@ -48,22 +48,28 @@ export function Product({ api }) {
 			pictures,
 			name,
 			stock,
-		
 		}
 		dispatch(addItem(item))
 	}
 
 	console.log(data)
 
-	const changeFavoriteHandler = (event) => {
-		event.preventDefault()
-		dispatch(addFavorite(id))
-	}
 
+	//const [like, setLike] = useState(likes && likes.includes(user._id));
+
+	const update = ( id) => {
+		const items ={ id }
+		console.log(id)
+		//event.preventDefault();
+		//setLike(!like);
+		dispatch(addFavorite(items))
+	}
+	
 	return <>
 		<Link to="/catalog">Вернуться в каталог</Link>
 		<div className="product__container">
-		<h1>{data.name || "Страница товара"}</h1>
+		<h2>{data.name || "Страница товара"}</h2>
+		<hr/>
 		<div className="product__info">
 				<img className="img" src={data.pictures} alt="изображение" />
 				<div className="product__item">
@@ -82,7 +88,7 @@ export function Product({ api }) {
 		<hr/>
 		<div className="product__button">
 				<button className="btn" type="button" onClick={() => addItemCartHandler(data.price, data.discount, data.pictures, data.stock, data.name)}>В корзину</button>
-				<button className="btn" type="button" onClick={changeFavoriteHandler}>В избраное</button>
+				<button className="btn" type="button" onClick={()=>update(id)}>В избраное</button>
 			</div>
 		</div>
 		<br/>

@@ -16,8 +16,9 @@ export default ({ setUser, user }) => {
 	return (
 		<>
 			<Link className="btn btn__profile" to="/catalog">Вернуться в каталог</Link>
-			<br/>
+			
 			<h1>Личный кабинет</h1>
+			<hr/>
 			<p>Привет, {user}</p>
 			< div className="profile">
 					<div className="profile__info">
