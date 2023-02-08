@@ -2,7 +2,8 @@ import { QueryClient, useMutation } from "@tanstack/react-query";
 import { ErrorMessage, Field, Form, Formik, } from "formik";
 import { useNavigate } from "react-router";
 import * as Yup from "yup";
-import { queryClient } from '../../index.js'
+import { queryClient } from '../../index.js';
+import { Link } from "react-router-dom";
 import  './style.css';
 
 export const NEWPRODUCT_KEY=['NEWPRODUCT_KEY']
@@ -30,6 +31,7 @@ export function NewProductForm({api}) {
 
 return (
 	<>
+	<Link className="btn btn__profile" to="/catalog">Вернуться в каталог</Link>
 	<div className="container__form">
 		<h2>Создать свой продукт</h2>
 		<hr/>

@@ -91,10 +91,8 @@ export function Cart({ api }) {
 			<button className="btn" type="button">Оплатить</button>
 		</div>
 			<div className='cart-catalog'>
-				<Link to="/catalog">Вернуться в каталог</Link>
-			</div>
-			<div className='cart-catalog'>
-				<Link to="/profile">Личный кабинет</Link>
+			<Link className="btn btn__profile" to="/catalog">Вернуться в каталог</Link>
+			<Link to="/profile" className="btn btn__profile">Личный кабинет</Link>
 			</div>
 			<section className="section-cart">
 				<header className='section-cart__header'>

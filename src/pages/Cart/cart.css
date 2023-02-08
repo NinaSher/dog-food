@@ -56,7 +56,10 @@
 	margin-bottom: 40px;
 	padding-left: 20px;
 }
-
+.cart-catalog{
+	display: flex;
+	margin: 20px;
+}
 .clear {
 	width: 100px;
 	background-color: #ff4400b8;

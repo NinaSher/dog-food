@@ -29,7 +29,7 @@ export default ({ api }) => {
 
 	return (
 		<>
-		<Link to="/catalog">Вернуться в каталог</Link>
+		<Link className="btn btn__profile" to="/catalog">Вернуться в каталог</Link>
 <br/>
 			<h1>Страница избранных товаров</h1>
 			<hr/>

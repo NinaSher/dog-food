@@ -66,7 +66,7 @@ export function Product({ api }) {
 	}
 	
 	return <>
-		<Link to="/catalog">Вернуться в каталог</Link>
+		<Link className="btn btn__profile" to="/catalog">Вернуться в каталог</Link>
 		<div className="product__container">
 		<h2>{data.name || "Страница товара"}</h2>
 		<hr/>
