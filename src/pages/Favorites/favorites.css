@@ -28,3 +28,8 @@
 .h1{
 	padding: 100px;
 }
+.empty-block{
+	color: black;
+	align-items: center;
+	justify-content: center;
+}

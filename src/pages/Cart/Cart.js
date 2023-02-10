@@ -6,7 +6,7 @@ import { Api } from '../../Api'
 import './cart.css'
 
 import { OrderItem } from '../../components/OrderItem/OrderItem';
-import {  enumerate } from "../../components/Utils"
+import { enumerate } from "../../components/UUtils"
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setCheckboxEl } from '../../store/cartSlice/reducer'
@@ -79,7 +79,7 @@ export function Cart({ api }) {
 	const checkedId = (id) => {
 		const checkedElId = items.find((el) => el.id === id)
 		if (checkedElId) {
-		return checkedElId.checkbox
+			return checkedElId.checkbox
 		}
 		console.log(checkedElId.checkbox)
 		return checkedElId.checkbox
@@ -87,12 +87,12 @@ export function Cart({ api }) {
 
 	return (
 		<>
-		<div className='cart-button__left'>
-			<button className="btn" type="button">Оплатить</button>
-		</div>
+			<div className='cart-button__left'>
+				<button className="btn" type="button">Оплатить</button>
+			</div>
 			<div className='cart-catalog'>
-			<Link className="btn btn__profile" to="/catalog">Вернуться в каталог</Link>
-			<Link to="/profile" className="btn btn__profile">Личный кабинет</Link>
+				<Link className="btn btn__profile" to="/catalog">Вернуться в каталог</Link>
+				<Link to="/profile" className="btn btn__profile">Личный кабинет</Link>
 			</div>
 			<section className="section-cart">
 				<header className='section-cart__header'>
@@ -106,39 +106,39 @@ export function Cart({ api }) {
 								<div className='cart-header__cost'>стоимость</div>
 							</header>
 							{data ? data.map((el) => (
-								<div className='cart__body' key={el['_id']}> 
-								<input
-								type='checkbox'
-								checked={checkedId(el['_id'])}
-								onChange={() => checkedEl(el['_id'])}
-								className="checkbox"/>
-								<>
-									<OrderItem 
-										el={el}
-										checkedEl={checkedEl}
-										quantity={quantity}
-									/>
+								<div className='cart__body' key={el['_id']}>
+									<input
+										type='checkbox'
+										checked={checkedId(el['_id'])}
+										onChange={() => checkedEl(el['_id'])}
+										className="checkbox" />
+									<>
+										<OrderItem
+											el={el}
+											checkedEl={checkedEl}
+											quantity={quantity}
+										/>
 									</>
-									</div>
+								</div>
 							)) : null}
-							
+
 							<div className="order-item"></div>
 							<footer className='cart-footer'>
 								<span>Итого:</span>
 								<div className='cart-footer__price'>
 									{' '}
-									<span>{ items.length} {enumerate( items.length, ['товар', 'товара', 'товаров'])} на сумму { totalPrice} руб.</span>
+									<span>{items.length} {enumerate(items.length, ['товар', 'товара', 'товаров'])} на сумму {totalPrice} руб.</span>
 								</div>
 							</footer>
-							<br/>
+							<br />
 							<button className="btn" type="button" onClick={() => onClickClearCart()}>
-								Очистить 
+								Очистить
 							</button>
 						</section>
 					</div>
 				</div>
 			</section>
-			</>
+		</>
 	)
 };
 
