@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../components/Card/IIndex";
+import Card from "../components/Card/Index";
 import { Link } from "react-router-dom";
 import { EmojiFrown } from "react-bootstrap-icons";
 

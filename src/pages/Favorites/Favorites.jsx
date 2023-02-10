@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import { useDispatch, useSelector } from "react-redux"
 import { EmojiFrown } from "react-bootstrap-icons";
 import { Link, useParams } from "react-router-dom";
-import { Card } from "../../components/Card/IIndex";
+import { Card } from "../../components/Card/Index";
 import './favorites.css'
 
 

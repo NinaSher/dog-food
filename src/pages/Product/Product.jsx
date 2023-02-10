@@ -3,7 +3,7 @@
 import React from "react";
 
 import { useParams, Link, NavLink } from "react-router-dom";
-import Review from "../../components/Review/RReview";
+import Review from "../../components/Review/Review";
 import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../store/cartSlice/reducer";

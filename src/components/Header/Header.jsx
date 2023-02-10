@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {PlusCircle, Heart} from "react-bootstrap-icons";
 import { Badge } from "react-bootstrap";
 import './header.css';
-import  Search from "../Search/SSearch";
+import  Search from "../Search/Search";
 import { CartBlock } from "../CartBlock/CartBlock";
 
 
