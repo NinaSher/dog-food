@@ -2,7 +2,7 @@ import { QueryClient, useMutation } from "@tanstack/react-query";
 import { ErrorMessage, Field, Form, Formik, } from "formik";
 import { useNavigate } from "react-router";
 import * as Yup from "yup";
-import { queryClient } from '../../index.js';
+import { queryClient } from '../../iindex.js';
 import { Link } from "react-router-dom";
 import  './style.css';
 
