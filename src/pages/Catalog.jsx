@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../components/Card/Index";
+import Card from "../components/Card/IIndex";
 import { Link } from "react-router-dom";
 import { EmojiFrown } from "react-bootstrap-icons";
 
@@ -34,6 +34,6 @@ export default ({ data }) => {
 				<Link to="/" className="btn" >На главную</Link>
 			</div>
 		}
-		
+
 	</>
 }

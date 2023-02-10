@@ -1,6 +1,6 @@
 import React from "react";
 //import Card from "../components/Card";
-import Post from "../components/Post/Post";
+import Post from "../components/Post/PPost";
 import {Link} from "react-router-dom";
 
 

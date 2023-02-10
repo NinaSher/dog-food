@@ -6,8 +6,8 @@ import store from "./store/store";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Modal from "./components/Modal/Index";
-import Topnav from "./components/Topnav/TTopnav";
+import Modal from "./components/Modal/IIndex";
+import Topnav from "./components/Topnav/Topnav";
 
 
 
