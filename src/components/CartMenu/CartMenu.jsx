@@ -2,7 +2,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { CartItem } from "../CartItem/CartItem";
-import { calcTotalPrice } from "../UUtils";
+import { calcTotalPrice } from "../Utils";
 import "./cartMenu.css";
 
 

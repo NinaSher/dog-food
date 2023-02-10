@@ -5,7 +5,7 @@ import React, { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import { BiCartAlt } from "react-icons/bi";
 import { CartMenu } from "../CartMenu/CartMenu";
-import { calcTotalPrice } from "../UUtils";
+import { calcTotalPrice } from "../Utils";
 import { ItemsInCart } from "../ItemsInCart/ItemsInCart";
 import { useNavigate } from "react-router-dom";
 

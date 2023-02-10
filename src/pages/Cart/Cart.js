@@ -6,7 +6,7 @@ import { Api } from '../../Api'
 import './cart.css'
 
 import { OrderItem } from '../../components/OrderItem/OrderItem';
-import { enumerate } from "../../components/UUtils"
+import { enumerate } from "../../components/Utils"
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setCheckboxEl } from '../../store/cartSlice/reducer'
